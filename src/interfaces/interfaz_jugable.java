@@ -18,18 +18,19 @@ import javax.swing.JOptionPane;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3742
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 10-30-2022
-    Versión: 0.1
+    Fecha última modificación: 11-04-2022
+    Versión: 0.2
     Licencia: GNU-GPL
 */
 public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
+    private int vidas, aciertos, fallos, rondaActual;
 
     /**
      * Creates new form interfaz_jugable
      */
-    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos) {
+    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual) {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
@@ -37,8 +38,22 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         this.tiempoInicioHoras = _tiempoInicioHoras;
         this.tiempoInicioMinutos = _tiempoInicioMinutos;
-        this.tiempoInicioSegundos = _tiempoInicioSegundos;      
-       
+        this.tiempoInicioSegundos = _tiempoInicioSegundos;   
+        this.vidas = _vidas;
+        this.aciertos = _aciertos;
+        this.fallos = _fallos;    
+        this.rondaActual = _rondaActual;
+        
+        // Habilitando los labels de las vidas según la cantidad de vidas
+        if(vidas>=1){
+            lbl_vida1.setEnabled(true);
+        }
+        if(vidas>=2){
+            lbl_vida2.setEnabled(true);
+        }
+        if(vidas>=3){
+            lbl_vida3.setEnabled(true);
+        }
     }
 
     /**
@@ -73,9 +88,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
-        lbl_corazon1 = new javax.swing.JLabel();
-        lbl_corazon2 = new javax.swing.JLabel();
-        lbl_corazon3 = new javax.swing.JLabel();
+        lbl_vida1 = new javax.swing.JLabel();
+        lbl_vida2 = new javax.swing.JLabel();
+        lbl_vida3 = new javax.swing.JLabel();
         lbl_banner_superior = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
 
@@ -288,20 +303,23 @@ public class interfaz_jugable extends javax.swing.JFrame {
         });
         jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 70, 80));
 
-        lbl_corazon1.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_corazon1.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_corazon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
-        jPanel1.add(lbl_corazon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 4, 30, 30));
+        lbl_vida1.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_vida1.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        lbl_vida1.setEnabled(false);
+        jPanel1.add(lbl_vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 4, 30, 30));
 
-        lbl_corazon2.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_corazon2.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_corazon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
-        jPanel1.add(lbl_corazon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 4, 30, 30));
+        lbl_vida2.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_vida2.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_vida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        lbl_vida2.setEnabled(false);
+        jPanel1.add(lbl_vida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 4, 30, 30));
 
-        lbl_corazon3.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_corazon3.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_corazon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
-        jPanel1.add(lbl_corazon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 4, 30, 30));
+        lbl_vida3.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_vida3.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_vida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        lbl_vida3.setEnabled(false);
+        jPanel1.add(lbl_vida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 4, 30, 30));
 
         lbl_banner_superior.setBackground(new java.awt.Color(0, 102, 102));
         lbl_banner_superior.setForeground(new java.awt.Color(255, 255, 255));
@@ -411,17 +429,25 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        tiempoFinal = LocalTime.now();     
-        tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
-        tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
-        tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
-        
-        JOptionPane.showMessageDialog(null, "La partida ha durado " + tiempoFinal.getMinute() + " minutos y " + tiempoFinal.getSecond() + " segundos.");
+        finalizarPartida();
         interfaz_memorabble im = new interfaz_memorabble();
         im.setVisible(true);  
         dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    public void finalizarPartida(){
+        // Calculando Tiempo Jugado
+        tiempoFinal = LocalTime.now();     
+        tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
+        tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
+        tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
+        
+        JOptionPane.showMessageDialog(null, "Resumen" 
+                + "\n" + "Rondas jugadas: " + rondaActual
+                + "\n" + "Aciertos: " + aciertos 
+                + "\n" + "Fallos: " + fallos
+                + "\n" + "La partida ha durado " + tiempoFinal.getMinute() + " minutos y " + tiempoFinal.getSecond() + " segundos.");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -445,12 +471,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JLabel lbl_banner_superior;
-    private javax.swing.JLabel lbl_corazon1;
-    private javax.swing.JLabel lbl_corazon2;
-    private javax.swing.JLabel lbl_corazon3;
     private javax.swing.JLabel lbl_criterio;
     private javax.swing.JLabel lbl_imagen_criterio;
     private javax.swing.JLabel lbl_puntuacion;
+    private javax.swing.JLabel lbl_vida1;
+    private javax.swing.JLabel lbl_vida2;
+    private javax.swing.JLabel lbl_vida3;
     private javax.swing.JTextField txt_puntuacion;
     // End of variables declaration//GEN-END:variables
 }
