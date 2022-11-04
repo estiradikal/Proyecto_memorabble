@@ -197,8 +197,8 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
             dispose();
-       interfaz_jugable ij=new interfaz_jugable();
-       ij.setVisible(true); 
+        gameLauncher lanzador = new gameLauncher();
+        lanzador.nuevoJuego();
         }  
     }//GEN-LAST:event_btn_jugarActionPerformed
 
