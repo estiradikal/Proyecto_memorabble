@@ -16,11 +16,9 @@ package interfaces;
     Licencia: GNU-GPL
 */
 public class main {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) {        
+        interfaz_memorabble im = new interfaz_memorabble();
+        im.setVisible(true);  
         
-        interfaz_memorabble im=new interfaz_memorabble();
-        im.setVisible(true);
-                
     }
 }
