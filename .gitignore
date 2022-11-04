@@ -1,1 +1,4 @@
 /build/
+
+# ignorar la carpeta de configuracion privada
+/nbproject/private
