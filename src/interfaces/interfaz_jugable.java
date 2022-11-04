@@ -51,13 +51,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_puntuacion = new javax.swing.JLabel();
         txt_puntuacion = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        txt_puntuacion1 = new javax.swing.JTextField();
-        lbl_imagen_lateral = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_criterio = new javax.swing.JLabel();
+        lbl_imagen_criterio = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -76,6 +73,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
+        lbl_corazon1 = new javax.swing.JLabel();
+        lbl_corazon2 = new javax.swing.JLabel();
+        lbl_corazon3 = new javax.swing.JLabel();
+        lbl_banner_superior = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,10 +84,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("PUNTUACIÓN");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+        lbl_puntuacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbl_puntuacion.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_puntuacion.setText("PUNTUACIÓN");
+        jPanel1.add(lbl_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 4, -1, 30));
 
         txt_puntuacion.setEditable(false);
         txt_puntuacion.setBackground(new java.awt.Color(255, 255, 255));
@@ -96,34 +97,16 @@ public class interfaz_jugable extends javax.swing.JFrame {
                 txt_puntuacionActionPerformed(evt);
             }
         });
-        jPanel1.add(txt_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 12, 120, 20));
+        jPanel1.add(txt_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 4, 120, 30));
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("aqui van los kokorokos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, -1, -1));
+        lbl_criterio.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_criterio.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_criterio.setText("Selecciona las figuras que coincida con");
+        jPanel1.add(lbl_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 210, -1));
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Selecciona las figuras que coincida con");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 210, -1));
-
-        txt_puntuacion1.setForeground(new java.awt.Color(0, 0, 0));
-        txt_puntuacion1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_puntuacion1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_puntuacion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 140, 180));
-
-        lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_imagen_lateral.setOpaque(true);
-        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 40));
-
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("PUNTUACIÓN");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, -1));
+        lbl_imagen_criterio.setBackground(new java.awt.Color(102, 102, 102));
+        lbl_imagen_criterio.setOpaque(true);
+        jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));
 
         jButton1.setBackground(new java.awt.Color(204, 204, 204));
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
@@ -305,6 +288,26 @@ public class interfaz_jugable extends javax.swing.JFrame {
         });
         jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 70, 80));
 
+        lbl_corazon1.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_corazon1.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_corazon1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        jPanel1.add(lbl_corazon1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 4, 30, 30));
+
+        lbl_corazon2.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_corazon2.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_corazon2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        jPanel1.add(lbl_corazon2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 4, 30, 30));
+
+        lbl_corazon3.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_corazon3.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_corazon3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
+        jPanel1.add(lbl_corazon3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 4, 30, 30));
+
+        lbl_banner_superior.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_banner_superior.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_banner_superior.setOpaque(true);
+        jPanel1.add(lbl_banner_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 40));
+
         jToggleButton1.setBackground(new java.awt.Color(0, 102, 102));
         jToggleButton1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jToggleButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -342,10 +345,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void txt_puntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_puntuacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_puntuacionActionPerformed
-
-    private void txt_puntuacion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_puntuacion1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_puntuacion1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -443,14 +442,15 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel lbl_imagen_lateral;
+    private javax.swing.JLabel lbl_banner_superior;
+    private javax.swing.JLabel lbl_corazon1;
+    private javax.swing.JLabel lbl_corazon2;
+    private javax.swing.JLabel lbl_corazon3;
+    private javax.swing.JLabel lbl_criterio;
+    private javax.swing.JLabel lbl_imagen_criterio;
+    private javax.swing.JLabel lbl_puntuacion;
     private javax.swing.JTextField txt_puntuacion;
-    private javax.swing.JTextField txt_puntuacion1;
     // End of variables declaration//GEN-END:variables
 }
