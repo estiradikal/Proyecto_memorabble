@@ -25,16 +25,16 @@ import javax.swing.JOptionPane;
 public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
-    private int vidas, aciertos, fallos, rondaActual;
+    private int vidas, aciertos, fallos, rondaActual, puntuacion;
 
     /**
      * Creates new form interfaz_jugable
      */
-    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual) {
+    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion) {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
-        setResizable(false);
+        setResizable(false);      
         
         this.tiempoInicioHoras = _tiempoInicioHoras;
         this.tiempoInicioMinutos = _tiempoInicioMinutos;
@@ -43,6 +43,13 @@ public class interfaz_jugable extends javax.swing.JFrame {
         this.aciertos = _aciertos;
         this.fallos = _fallos;    
         this.rondaActual = _rondaActual;
+        this.puntuacion = _puntuacion;
+        
+        // Definiendo numero de Ronda
+        lbl_rondaActual.setText("RONDA " + rondaActual);
+        
+        // Definiendo puntuacion inicial
+        lbl_puntuacionActual.setText(Integer.toString(puntuacion));        
         
         // Habilitando los labels de las vidas según la cantidad de vidas
         if(vidas>=1){
@@ -53,7 +60,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         }
         if(vidas>=3){
             lbl_vida3.setEnabled(true);
-        }
+        }    
     }
 
     /**
@@ -66,8 +73,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        lbl_rondaActual = new javax.swing.JLabel();
         lbl_puntuacion = new javax.swing.JLabel();
-        txt_puntuacion = new javax.swing.JTextField();
+        lbl_puntuacionActual = new javax.swing.JLabel();
         lbl_criterio = new javax.swing.JLabel();
         lbl_imagen_criterio = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -93,26 +101,31 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_vida3 = new javax.swing.JLabel();
         lbl_banner_superior = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
+        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        lbl_rondaActual.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbl_rondaActual.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_rondaActual.setText("RONDA  ");
+        jPanel1.add(lbl_rondaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, 30));
+
         lbl_puntuacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbl_puntuacion.setForeground(new java.awt.Color(255, 255, 255));
         lbl_puntuacion.setText("PUNTUACIÓN");
         jPanel1.add(lbl_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 4, -1, 30));
 
-        txt_puntuacion.setEditable(false);
-        txt_puntuacion.setBackground(new java.awt.Color(255, 255, 255));
-        txt_puntuacion.setForeground(new java.awt.Color(0, 0, 0));
-        txt_puntuacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_puntuacionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txt_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 4, 120, 30));
+        lbl_puntuacionActual.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_puntuacionActual.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        lbl_puntuacionActual.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_puntuacionActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_puntuacionActual.setText("0");
+        lbl_puntuacionActual.setOpaque(true);
+        jPanel1.add(lbl_puntuacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 4, 90, 30));
 
         lbl_criterio.setBackground(new java.awt.Color(255, 255, 255));
         lbl_criterio.setForeground(new java.awt.Color(0, 0, 0));
@@ -338,6 +351,22 @@ public class interfaz_jugable extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, -1));
 
+        jToggleButton3.setText("+1 Fallo");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 90, -1));
+
+        jToggleButton4.setText("+1 Acierto");
+        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -359,10 +388,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void txt_puntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_puntuacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_puntuacionActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -435,6 +460,49 @@ public class interfaz_jugable extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
+        addAcierto();
+    }//GEN-LAST:event_jToggleButton4ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        addFallo();
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    public void addAcierto(){
+        aciertos += 1;
+        puntuacion += 100;
+        lbl_puntuacionActual.setText(Integer.toString(puntuacion));        
+        if(1 == 1){ // Comprobación si se seleccionaron todas las figuras que coinciden con el criterio (Por construir...)
+            victoria();
+        }
+    }
+    
+    public void addFallo(){
+        fallos += 1;
+        vidas -= 1;
+        derrota();
+    }
+    
+    public void victoria(){
+        siguienteRonda();      
+    }
+    
+    public void derrota(){
+        if(vidas>=1){
+            siguienteRonda();
+        }
+        else{            
+            lbl_vida1.setEnabled(false);        
+            finalizarPartida();
+        }     
+    }
+    
+    public void siguienteRonda(){
+        dispose();
+        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, vidas, aciertos, fallos, rondaActual+1, puntuacion);
+        ij.setVisible(true); 
+    }
+    
     public void finalizarPartida(){
         // Calculando Tiempo Jugado
         tiempoFinal = LocalTime.now();     
@@ -443,10 +511,17 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
         
         JOptionPane.showMessageDialog(null, "Resumen" 
+                + "\n"
+                + "\n" + "Puntaje total: " + puntuacion
                 + "\n" + "Rondas jugadas: " + rondaActual
                 + "\n" + "Aciertos: " + aciertos 
                 + "\n" + "Fallos: " + fallos
+                + "\n"
                 + "\n" + "La partida ha durado " + tiempoFinal.getMinute() + " minutos y " + tiempoFinal.getSecond() + " segundos.");
+        
+        dispose();
+        interfaz_memorabble im = new interfaz_memorabble();
+        im.setVisible(true);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -470,13 +545,16 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel lbl_banner_superior;
     private javax.swing.JLabel lbl_criterio;
     private javax.swing.JLabel lbl_imagen_criterio;
     private javax.swing.JLabel lbl_puntuacion;
+    private javax.swing.JLabel lbl_puntuacionActual;
+    private javax.swing.JLabel lbl_rondaActual;
     private javax.swing.JLabel lbl_vida1;
     private javax.swing.JLabel lbl_vida2;
     private javax.swing.JLabel lbl_vida3;
-    private javax.swing.JTextField txt_puntuacion;
     // End of variables declaration//GEN-END:variables
 }
