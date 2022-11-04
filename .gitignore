@@ -2,3 +2,4 @@
 
 # ignorar la carpeta de configuracion privada
 /nbproject/private
+/dist/
