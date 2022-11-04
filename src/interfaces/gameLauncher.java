@@ -13,9 +13,9 @@ import java.time.LocalTime;
             * Alejandro Guerrero <alejandro.cano@correounivalle.edu.co> - 202179652-3743
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3742
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
-    Fecha creación: 
-    Fecha última modificación: 
-    Versión: 1.0
+    Fecha creación: 11-04-2022
+    Fecha última modificación: 11-04-2022
+    Versión: 1.1
     Licencia: GNU-GPL
 */
 
@@ -37,7 +37,7 @@ public class gameLauncher {
     }
     
     public void nuevoJuego(){       
-        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos );
+        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, 3, 0, 0, 1);
         ij.setVisible(true); 
     }
 }
