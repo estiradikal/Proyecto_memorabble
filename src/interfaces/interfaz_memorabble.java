@@ -71,15 +71,12 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         lbl_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_bienvenido.setForeground(new java.awt.Color(0, 0, 0));
         lbl_bienvenido.setText("Bienvenid@,");
         jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
 
-        lbl_digite_su_nombre.setForeground(new java.awt.Color(0, 0, 0));
         lbl_digite_su_nombre.setText("Digite su nombre para empezar a jugar");
         jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        campo_nombre.setBackground(new java.awt.Color(255, 255, 255));
         campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
         campo_nombre.setText("Ingrese su nombre...");
         campo_nombre.setBorder(null);
