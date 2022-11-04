@@ -34,69 +34,122 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_como_jugar = new javax.swing.JButton();
-        btn_jugar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
+        lbl_bienvenido = new javax.swing.JLabel();
+        lbl_digite_su_nombre = new javax.swing.JLabel();
+        campo_nombre = new javax.swing.JTextField();
+        lbl_separador = new javax.swing.JLabel();
+        btn_jugar = new javax.swing.JButton();
+        btn_como_jugar = new javax.swing.JButton();
         btn_para_que_sirve = new javax.swing.JButton();
+        lbl_imagen_lateral = new javax.swing.JLabel();
+        lbl_separador_inferior = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(90, 146, 45));
+        setPreferredSize(new java.awt.Dimension(436, 372));
 
-        btn_como_jugar.setText("¿Cómo jugar?");
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(436, 472));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
+        lbl_titulo.setText("Memorabble");
+        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        lbl_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lbl_bienvenido.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_bienvenido.setText("Bienvenid@,");
+        jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+
+        lbl_digite_su_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_digite_su_nombre.setText("Digite su nombre para empezar a jugar");
+        jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+
+        campo_nombre.setBackground(new java.awt.Color(255, 255, 255));
+        campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
+        campo_nombre.setText("Ingrese su nombre...");
+        campo_nombre.setBorder(null);
+        campo_nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                campo_nombreMousePressed(evt);
+            }
+        });
+        campo_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                campo_nombreActionPerformed(evt);
+            }
+        });
+        campo_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campo_nombreKeyPressed(evt);
+            }
+        });
+        jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 230, -1));
+
+        lbl_separador.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador.setOpaque(true);
+        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 2));
+
+        btn_jugar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_jugar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_jugar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_jugar.setText("Jugar");
+        btn_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_jugar.setBorderPainted(false);
+        btn_jugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_jugarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btn_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 80, 30));
+
+        btn_como_jugar.setBackground(new java.awt.Color(0, 102, 102));
+        btn_como_jugar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_como_jugar.setForeground(new java.awt.Color(255, 255, 255));
+        btn_como_jugar.setText("¿Como jugar?");
+        btn_como_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_como_jugar.setBorderPainted(false);
         btn_como_jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_como_jugarActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_como_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
 
-        btn_jugar.setText("JUGAR");
-        btn_jugar.setBorder(null);
-        btn_jugar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_jugarActionPerformed(evt);
-            }
-        });
-
-        lbl_titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/memorabble.jpg"))); // NOI18N
-
+        btn_para_que_sirve.setBackground(new java.awt.Color(0, 102, 102));
+        btn_para_que_sirve.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_para_que_sirve.setForeground(new java.awt.Color(255, 255, 255));
         btn_para_que_sirve.setText("¿Para qué sirve?");
+        btn_para_que_sirve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_para_que_sirve.setBorderPainted(false);
         btn_para_que_sirve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_para_que_sirveActionPerformed(evt);
             }
         });
+        jPanel1.add(btn_para_que_sirve, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 110, 30));
+
+        lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
+        lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_imagen_lateral.setOpaque(true);
+        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 140, 320));
+
+        lbl_separador_inferior.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador_inferior.setOpaque(true);
+        jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 440, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lbl_titulo)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(btn_como_jugar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_para_que_sirve)
-                .addGap(24, 24, 24))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(174, 174, 174))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(lbl_titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(btn_jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_como_jugar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_para_que_sirve, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -117,14 +170,38 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_para_que_sirveActionPerformed
 
     private void btn_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugarActionPerformed
-       String nombre=JOptionPane.showInputDialog("Digite su nombre para continúar: ");
-       JOptionPane.showMessageDialog(null,"Buen juego "+nombre);
-       dispose();
+       //String nombre=JOptionPane.showInputDialog("Digite su nombre para continúar: ");
+       //JOptionPane.showMessageDialog(null,"Buen juego "+nombre);
+        if((campo_nombre.getText().isEmpty()) || ("Ingrese su nombre...".equals(campo_nombre.getText()))){
+            campo_nombre.setForeground(Color.GRAY);
+            campo_nombre.setText("Ingrese su nombre...");
+            JOptionPane.showMessageDialog(null, "Debes escribir tu nombre para continuar");
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
+            dispose();
        interfaz_jugable ij=new interfaz_jugable();
-       ij.setVisible(true);
-       
-       
+       ij.setVisible(true); 
+        }  
     }//GEN-LAST:event_btn_jugarActionPerformed
+
+    private void campo_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_campo_nombreActionPerformed
+
+    private void campo_nombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_campo_nombreMousePressed
+        if("Ingrese su nombre...".equals(campo_nombre.getText())){
+            campo_nombre.setForeground(Color.BLACK);
+            campo_nombre.setText("");
+        }
+    }//GEN-LAST:event_campo_nombreMousePressed
+
+    private void campo_nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_nombreKeyPressed
+        if("Ingrese su nombre...".equals(campo_nombre.getText())){
+            campo_nombre.setForeground(Color.BLACK);
+            campo_nombre.setText("");
+        }
+    }//GEN-LAST:event_campo_nombreKeyPressed
 
     /**
      * @param args the command line arguments
@@ -165,6 +242,13 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private javax.swing.JButton btn_como_jugar;
     private javax.swing.JButton btn_jugar;
     private javax.swing.JButton btn_para_que_sirve;
+    private javax.swing.JTextField campo_nombre;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lbl_bienvenido;
+    private javax.swing.JLabel lbl_digite_su_nombre;
+    private javax.swing.JLabel lbl_imagen_lateral;
+    private javax.swing.JLabel lbl_separador;
+    private javax.swing.JLabel lbl_separador_inferior;
     private javax.swing.JLabel lbl_titulo;
     // End of variables declaration//GEN-END:variables
 }
