@@ -37,7 +37,7 @@ public class gameLauncher {
     }
     
     public void nuevoJuego(){       
-        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, 3, 0, 0, 1, 0);
+        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, 3, 0, 0, 1, 0, 1);
         ij.setVisible(true); 
     }
 }
