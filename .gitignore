@@ -1,5 +1,9 @@
+# ignorar la carpeta de construcciones
 /build/
 
 # ignorar la carpeta de configuracion privada
 /nbproject/private
 /dist/
+
+# ignorar el mainProvisional.java (donde puede experimentar cualquiera en su rama)
+/src/interfaces/mainProvisional.java
