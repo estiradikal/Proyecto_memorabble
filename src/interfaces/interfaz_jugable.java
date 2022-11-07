@@ -218,7 +218,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
         };
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
-
+            
+            misFichas.add(new JButton());
             misFichas.get(fichaActual).setEnabled(false);
             
             misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));          
