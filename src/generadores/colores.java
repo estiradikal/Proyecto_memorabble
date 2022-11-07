@@ -30,6 +30,7 @@ public class colores{
         misColores.add("AZUL");
         misColores.add("NEGRO");
         misColores.add("ROJO");
+        misColores.add("VERDE");
     }   
  
     public String generarColor(){
