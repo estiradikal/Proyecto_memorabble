@@ -30,7 +30,8 @@ import java.util.*;
 public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
-    private int vidas, aciertos, fallos, rondaActual, puntuacion;
+    private int vidas, aciertos, fallos, rondaActual, puntuacion, dificultad;
+    private int restantes = dificultad+1;
     private int criterio;
     private java.util.List<JButton> misFichas = new ArrayList<>();
     private JLabel lbl_imagen_criterio = new JLabel();
@@ -38,7 +39,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     /**
      * Creates new form interfaz_jugable
      */
-    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion) {        
+    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion, int _dificultad) {        
         initComponents();
         iniciarFichas();       
         iniciarCriterio();
@@ -54,6 +55,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         this.fallos = _fallos;    
         this.rondaActual = _rondaActual;
         this.puntuacion = _puntuacion;
+        this.dificultad = _dificultad;
         
         // Definiendo numero de Ronda
         lbl_rondaActual.setText("RONDA " + rondaActual);
@@ -72,6 +74,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
             lbl_vida3.setEnabled(true);
         }    
         
+        asignarFichas();
         mostrarCriterio(5);    
     }
 
@@ -210,19 +213,24 @@ public class interfaz_jugable extends javax.swing.JFrame {
             JButton source = (JButton) e.getSource();             
            
             if(source.getText() == lbl_imagen_criterio.getText()){
+                source.setText("EPIC!");
+                source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
             }
             else{
                 addFallo();
-            }           
+            }   
+            source.setEnabled(false);
         };
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
             
             misFichas.add(new JButton());
             misFichas.get(fichaActual).setEnabled(false);
+            misFichas.get(fichaActual).setText("EMPTY");
             
-            misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));          
+            misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));   
+            misFichas.get(fichaActual).setBackground(new java.awt.Color(90, 90, 90));
             misFichas.get(fichaActual).setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
             misFichas.get(fichaActual).addActionListener(oyenteDeFichas);
             
@@ -233,7 +241,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
                 posY += 90;
                 posX = 20;
             }    
-        }          
+        }     
     }
     
     private void habilitarFichas(){
@@ -245,6 +253,57 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void deshabilitarFichas(){
         for(JButton fichaActual: misFichas){
             fichaActual.setEnabled(false);
+        } 
+    }
+    
+    private void asignarFichas(){
+        int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
+        
+        for(int fichaActual = 0; fichaActual < dificultad; fichaActual ++){     
+            numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
+            asignarFichasColor(numRandom, lbl_imagen_criterio.getText());
+        }
+     
+        for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
+            numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
+            generadores.colores color = new generadores.colores();
+            
+            if(misFichas.get(numRandom).getText() == "EMPTY"){
+                asignarFichasColor(numRandom, color.generarColor());
+            }
+        }
+    }
+    
+    private void asignarFichasColor(int _direccion, String criterioActual){
+        switch (criterioActual) {
+            case "AMARILLO":
+                misFichas.get(_direccion).setText("AMARILLO");
+                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 255, 0));                
+                break;
+            case "AZUL":
+                misFichas.get(_direccion).setText("AZUL");
+                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 255));
+                break;
+            case "NEGRO":
+                misFichas.get(_direccion).setText("NEGRO");
+                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 0));
+                break;
+            case "ROJO":
+                misFichas.get(_direccion).setText("ROJO");
+                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 0, 0));
+                break;
+            case "VERDE":
+                misFichas.get(_direccion).setText("VERDE");
+                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 255, 0));
+                break;
+            default:                
+                break;
+        }  
+    }
+    
+    private void ocultarFichas(){
+        for(JButton fichaActual: misFichas){
+            fichaActual.setBackground(new java.awt.Color(200, 200, 200));
         } 
     }
  
@@ -343,6 +402,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
                     lbl_criterio.setText("Error: Criterio fuera de rango");
                 }
                 
+                ocultarFichas();
                 habilitarFichas();
             }
         }, delay);
@@ -364,11 +424,22 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }//GEN-LAST:event_jToggleButton3ActionPerformed
 
     public void addAcierto(){
+        restantes = 0;
         aciertos += 1;
         puntuacion += 100;
-        lbl_puntuacionActual.setText(Integer.toString(puntuacion));        
-        if(1 == 1){ // Comprobación si se seleccionaron todas las figuras que coinciden con el criterio (Por construir...)
+        lbl_puntuacionActual.setText(Integer.toString(puntuacion));   
+        for(JButton fichaActual: misFichas){
+            if(fichaActual.getText() == lbl_imagen_criterio.getText()){ // Comprobación si se seleccionaron todas las figuras que coinciden con el criterio (Por construir...)
+                restantes += 1;              
+            }
+        }  
+        
+        if(restantes<=0){
+            JOptionPane.showMessageDialog(null, "Ganaste esta ronda, vamos por la siguiente!");
             victoria();
+        }
+        else{
+            lbl_criterio.setText("Quedan: " + restantes +  " por encontrar");
         }
     }
     
@@ -394,10 +465,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
     
     public void siguienteRonda(){
         dispose();
-        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, vidas, aciertos, fallos, rondaActual+1, puntuacion);
-        ij.setVisible(true); 
-        
-        
+        if(rondaActual%4==0){
+            dificultad+=1;
+        }
+        interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, vidas, aciertos, fallos, rondaActual+1, puntuacion, dificultad);
+        ij.setVisible(true);        
     }
     
     public void finalizarPartida(){
