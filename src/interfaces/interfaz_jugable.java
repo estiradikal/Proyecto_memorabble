@@ -4,8 +4,13 @@
  */
 package interfaces;
 
-import java.time.LocalTime;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
 import javax.swing.JOptionPane;
+import java.time.LocalTime;
+import java.util.*;
+
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -26,16 +31,21 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     private int vidas, aciertos, fallos, rondaActual, puntuacion;
+    private int criterio;
+    private java.util.List<JButton> misFichas = new ArrayList<>();
+    private JLabel lbl_imagen_criterio = new JLabel();
 
     /**
      * Creates new form interfaz_jugable
      */
-    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion) {
+    public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion) {        
         initComponents();
+        iniciarFichas();       
+        iniciarCriterio();
         setVisible(true);
         setLocationRelativeTo(null);
-        setResizable(false);      
-        
+        setResizable(false);
+     
         this.tiempoInicioHoras = _tiempoInicioHoras;
         this.tiempoInicioMinutos = _tiempoInicioMinutos;
         this.tiempoInicioSegundos = _tiempoInicioSegundos;   
@@ -61,6 +71,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
         if(vidas>=3){
             lbl_vida3.setEnabled(true);
         }    
+        
+        mostrarCriterio(5);    
     }
 
     /**
@@ -77,25 +89,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_puntuacion = new javax.swing.JLabel();
         lbl_puntuacionActual = new javax.swing.JLabel();
         lbl_criterio = new javax.swing.JLabel();
-        lbl_imagen_criterio = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
         lbl_vida1 = new javax.swing.JLabel();
         lbl_vida2 = new javax.swing.JLabel();
         lbl_vida3 = new javax.swing.JLabel();
@@ -128,193 +121,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
         jPanel1.add(lbl_puntuacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 4, 90, 30));
 
         lbl_criterio.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_criterio.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         lbl_criterio.setForeground(new java.awt.Color(0, 0, 0));
-        lbl_criterio.setText("Selecciona las figuras que coincida con");
+        lbl_criterio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_criterio.setText("¡Memoriza todas las que puedas!");
         jPanel1.add(lbl_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 210, -1));
-
-        lbl_imagen_criterio.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_imagen_criterio.setOpaque(true);
-        jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 70, 80));
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 204));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 70, 80));
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
-        jButton3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 70, 80));
-
-        jButton4.setBackground(new java.awt.Color(204, 204, 204));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
-        jButton4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 80));
-
-        jButton5.setBackground(new java.awt.Color(204, 204, 204));
-        jButton5.setForeground(new java.awt.Color(0, 0, 0));
-        jButton5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 240, 70, 80));
-
-        jButton6.setBackground(new java.awt.Color(204, 204, 204));
-        jButton6.setForeground(new java.awt.Color(0, 0, 0));
-        jButton6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 70, 80));
-
-        jButton7.setBackground(new java.awt.Color(204, 204, 204));
-        jButton7.setForeground(new java.awt.Color(0, 0, 0));
-        jButton7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 70, 80));
-
-        jButton8.setBackground(new java.awt.Color(204, 204, 204));
-        jButton8.setForeground(new java.awt.Color(0, 0, 0));
-        jButton8.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 70, 80));
-
-        jButton9.setBackground(new java.awt.Color(204, 204, 204));
-        jButton9.setForeground(new java.awt.Color(0, 0, 0));
-        jButton9.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 70, 80));
-
-        jButton10.setBackground(new java.awt.Color(204, 204, 204));
-        jButton10.setForeground(new java.awt.Color(0, 0, 0));
-        jButton10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, 70, 80));
-
-        jButton11.setBackground(new java.awt.Color(204, 204, 204));
-        jButton11.setForeground(new java.awt.Color(0, 0, 0));
-        jButton11.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 70, 80));
-
-        jButton12.setBackground(new java.awt.Color(204, 204, 204));
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
-        jButton12.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 70, 80));
-
-        jButton13.setBackground(new java.awt.Color(204, 204, 204));
-        jButton13.setForeground(new java.awt.Color(0, 0, 0));
-        jButton13.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 70, 80));
-
-        jButton14.setBackground(new java.awt.Color(204, 204, 204));
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
-        jButton14.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 70, 80));
-
-        jButton15.setBackground(new java.awt.Color(204, 204, 204));
-        jButton15.setForeground(new java.awt.Color(0, 0, 0));
-        jButton15.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, 70, 80));
-
-        jButton16.setBackground(new java.awt.Color(204, 204, 204));
-        jButton16.setForeground(new java.awt.Color(0, 0, 0));
-        jButton16.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 60, 70, 80));
-
-        jButton17.setBackground(new java.awt.Color(204, 204, 204));
-        jButton17.setForeground(new java.awt.Color(0, 0, 0));
-        jButton17.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, 70, 80));
-
-        jButton18.setBackground(new java.awt.Color(204, 204, 204));
-        jButton18.setForeground(new java.awt.Color(0, 0, 0));
-        jButton18.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton18, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 70, 80));
 
         lbl_vida1.setBackground(new java.awt.Color(0, 102, 102));
         lbl_vida1.setForeground(new java.awt.Color(0, 0, 0));
@@ -381,78 +192,161 @@ public class interfaz_jugable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void iniciarFichas(){
+        int cantidadFichas;
+        int posX, posY, ancho, alto, filas, columnas;
+        
+        cantidadFichas = 18;
+        
+        posX = 20; // La proxima ficha está a +90
+        posY = 60; // La proxima ficha está a +80
+        ancho = 70;
+        alto = 80;
+        columnas = 6; // Horizontales
+        filas = 3; // Verticales        
+        
+        ActionListener oyenteDeFichas = (ActionEvent e) -> { 
+            JButton source = (JButton) e.getSource();             
+           
+            if(source.getText() == lbl_imagen_criterio.getText()){
+                addAcierto();
+            }
+            else{
+                addFallo();
+            }           
+        };
+        
+        for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
-
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
-
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
-
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
-
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton12ActionPerformed
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
-
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
-
+            misFichas.get(fichaActual).setEnabled(false);
+            
+            misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));          
+            misFichas.get(fichaActual).setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            misFichas.get(fichaActual).addActionListener(oyenteDeFichas);
+            
+            jPanel1.add(misFichas.get(fichaActual), new org.netbeans.lib.awtextra.AbsoluteConstraints(posX, posY, ancho, alto));
+            posX += 80;
+            
+            if((fichaActual+1) % 6 == 0){ // Si ya son todas las columnas entonces ir a una nueva fila
+                posY += 90;
+                posX = 20;
+            }    
+        }          
+    }
+    
+    private void habilitarFichas(){
+        for(JButton fichaActual: misFichas){
+            fichaActual.setEnabled(true);
+        } 
+    }
+    
+    private void deshabilitarFichas(){
+        for(JButton fichaActual: misFichas){
+            fichaActual.setEnabled(false);
+        } 
+    }
+ 
+    private void iniciarCriterio(){
+        lbl_imagen_criterio.setVisible(false);
+        jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));    
+  
+        lbl_imagen_criterio.setBackground(new java.awt.Color(102, 102, 102));
+        lbl_imagen_criterio.setFont(new java.awt.Font("Segoe UI", 0, 0)); // NOI18N
+        lbl_imagen_criterio.setOpaque(true);
+        
+        criterio = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); // Selecciona un criterio al azar: Color = 1, Forma = 2,...        
+        
+        if(criterio == 1){
+            generarCriterioColor();                   
+        }
+        else if(criterio == 2){
+            generarCriterioForma();
+        }     
+    }
+    
+    private void generarCriterioColor(){
+        generadores.colores color = new generadores.colores();
+        
+        lbl_imagen_criterio.setText(color.generarColor());
+        
+        switch (lbl_imagen_criterio.getText()) {
+            case "AMARILLO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 255, 0));                
+                break;
+            case "AZUL":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
+                break;
+            case "NEGRO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
+                break;
+            case "ROJO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
+                break;
+            case "VERDE":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 255, 0));
+                break;
+            default:
+                System.out.println("Se recibió " + lbl_imagen_criterio.getText() + " como color");
+                break;
+        } 
+    }
+    
+    private void generarCriterioForma(){
+        generadores.formas forma = new generadores.formas();
+        generadores.colores color = new generadores.colores();
+        
+        lbl_imagen_criterio.setText(color.generarColor());
+        
+        switch (lbl_imagen_criterio.getText()) {
+            case "AMARILLO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 255, 0));                
+                break;
+            case "AZUL":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
+                break;
+            case "NEGRO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
+                break;
+            case "ROJO":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
+                break;
+            case "VERDE":
+                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 255, 0));
+                break;
+            default:
+                System.out.println("Se recibió " + lbl_imagen_criterio.getText() + " como color");
+                break;
+        } 
+    }
+    
+    private void llenarFichas(){
+        
+    }
+    
+    public void mostrarCriterio(int segundos){
+        int delay = segundos*1000;
+             
+        java.util.Timer timer = new java.util.Timer();
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run(){
+                lbl_imagen_criterio.setVisible(true);
+                if(criterio == 1){
+                    lbl_criterio.setText("Selecciona las que tengan este color:");
+                }
+                else if(criterio == 2){
+                    lbl_criterio.setText("Selecciona las que tengan esta forma");
+                }
+                else{
+                    lbl_criterio.setText("Error: Criterio fuera de rango");
+                }
+                
+                habilitarFichas();
+            }
+        }, delay);
+    }
+    
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         finalizarPartida();
         interfaz_memorabble im = new interfaz_memorabble();
@@ -501,6 +395,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
         dispose();
         interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, vidas, aciertos, fallos, rondaActual+1, puntuacion);
         ij.setVisible(true); 
+        
+        
     }
     
     public void finalizarPartida(){
@@ -525,31 +421,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel lbl_banner_superior;
     private javax.swing.JLabel lbl_criterio;
-    private javax.swing.JLabel lbl_imagen_criterio;
     private javax.swing.JLabel lbl_puntuacion;
     private javax.swing.JLabel lbl_puntuacionActual;
     private javax.swing.JLabel lbl_rondaActual;
