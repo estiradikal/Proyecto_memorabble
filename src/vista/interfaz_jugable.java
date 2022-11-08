@@ -23,8 +23,8 @@ import java.util.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-04-2022
-    Versión: 0.2
+    Fecha última modificación: 11-07-2022
+    Versión: 0.3
     Licencia: GNU-GPL
 */
 public class interfaz_jugable extends javax.swing.JFrame {
@@ -97,8 +97,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_vida3 = new javax.swing.JLabel();
         lbl_banner_superior = new javax.swing.JLabel();
         jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,22 +163,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
         });
         jPanel1.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, -1));
 
-        jToggleButton3.setText("+1 Fallo");
-        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 320, 90, -1));
-
-        jToggleButton4.setText("+1 Acierto");
-        jToggleButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, 90, -1));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,15 +181,15 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private void iniciarFichas(){
         int cantidadFichas;
         int posX, posY, ancho, alto, filas, columnas;
-        
-        cantidadFichas = 18;
-        
+    
         posX = 20; // La proxima ficha está a +90
         posY = 60; // La proxima ficha está a +80
         ancho = 70;
         alto = 80;
         columnas = 6; // Horizontales
-        filas = 3; // Verticales        
+        filas = 3; // Verticales   
+        
+        cantidadFichas = columnas * filas;
         
         ActionListener oyenteDeFichas = (ActionEvent e) -> { 
             JButton source = (JButton) e.getSource();             
@@ -235,10 +217,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
             misFichas.get(fichaActual).addActionListener(oyenteDeFichas);
             
             jPanel1.add(misFichas.get(fichaActual), new org.netbeans.lib.awtextra.AbsoluteConstraints(posX, posY, ancho, alto));
-            posX += 80;
+            posX += ancho+10;
             
-            if((fichaActual+1) % 6 == 0){ // Si ya son todas las columnas entonces ir a una nueva fila
-                posY += 90;
+            if((fichaActual+1) % columnas == 0){ // Si ya son todas las columnas entonces ir a una nueva fila
+                posY += alto+5;
                 posX = 20;
             }    
         }     
@@ -415,14 +397,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
-    private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
-        addAcierto();
-    }//GEN-LAST:event_jToggleButton4ActionPerformed
-
-    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
-        addFallo();
-    }//GEN-LAST:event_jToggleButton3ActionPerformed
-
     public void addAcierto(){
         restantes = 0;
         aciertos += 1;
@@ -466,7 +440,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     
     public void siguienteRonda(){
         dispose();
-        if(rondaActual%4==0){
+        if(rondaActual%3==0){
             dificultad+=1;
         }
         interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos, vidas, aciertos, fallos, rondaActual+1, puntuacion, dificultad);
@@ -480,8 +454,33 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
         
-        JOptionPane.showMessageDialog(null, "Resumen" 
+        String titulo = "";
+        
+        if(aciertos>=0 && aciertos<5){
+            titulo = "Pato cocinado";
+        }
+        else if(aciertos>=5 && aciertos<10){
+            titulo = "Pato en sandalias";
+        }
+        else if(aciertos>=10 && aciertos<15){
+            titulo = "Pato en bermudas ";
+        }
+        else if(aciertos>=15 && aciertos<20){
+            titulo = "Pato aesthetic";
+        }
+        else if(aciertos>=20 && aciertos<40){
+            titulo = "Pato con traje";
+        }
+        else if(aciertos>=40 && aciertos<80){
+            titulo = "Pato con Jordans";
+        }
+        else if(aciertos>=80){
+            titulo = "Pato supremo";
+        }
+        
+        JOptionPane.showMessageDialog(null, "Resumen de partida" 
                 + "\n"
+                + "\n" + "Titulo conseguido: " + titulo
                 + "\n" + "Puntaje total: " + puntuacion
                 + "\n" + "Rondas jugadas: " + rondaActual
                 + "\n" + "Aciertos: " + aciertos 
@@ -497,8 +496,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JLabel lbl_banner_superior;
     private javax.swing.JLabel lbl_criterio;
     private javax.swing.JLabel lbl_puntuacion;
