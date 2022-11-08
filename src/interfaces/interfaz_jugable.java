@@ -393,10 +393,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
             public void run(){
                 lbl_imagen_criterio.setVisible(true);
                 if(criterio == 1){
-                    lbl_criterio.setText("Selecciona las que tengan este color:");
+                    lbl_criterio.setText("Selecciona las que tengan este color: ");
                 }
                 else if(criterio == 2){
-                    lbl_criterio.setText("Selecciona las que tengan esta forma");
+                    lbl_criterio.setText("Selecciona las que tengan esta forma: ");
                 }
                 else{
                     lbl_criterio.setText("Error: Criterio fuera de rango");
