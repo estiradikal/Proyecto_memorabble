@@ -2,15 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package vista;
 
+import controlador.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ESTIVEN
- */
+/*
+    Fundamentos de programación orientada a eventos 750014C-01  
+    LABORATORIO  
+    Profesor: Luis Romo Portilla
+
+    Archivo: interfaz_memorabble.java
+    Autores (A-Z): 
+            * Alejandro Guerrero <alejandro.cano@correounivalle.edu.co> - 202179652-3743
+            * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
+            * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
+    Fecha creación: 10-30-2022
+    Fecha última modificación: 11-03-2022
+    Versión: 0.2
+    Licencia: GNU-GPL
+*/
 public class interfaz_memorabble extends javax.swing.JFrame {
 
     /**
@@ -34,6 +46,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lbl_titulo = new javax.swing.JLabel();
         lbl_bienvenido = new javax.swing.JLabel();
@@ -46,9 +59,12 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         lbl_imagen_lateral = new javax.swing.JLabel();
         lbl_separador_inferior = new javax.swing.JLabel();
 
+        jLabel1.setText("jLabel1");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(90, 146, 45));
-        setPreferredSize(new java.awt.Dimension(436, 372));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setSize(new java.awt.Dimension(0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(436, 472));
@@ -57,18 +73,17 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
         lbl_titulo.setText("Memorabble");
-        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         lbl_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lbl_bienvenido.setForeground(new java.awt.Color(0, 0, 0));
         lbl_bienvenido.setText("Bienvenid@,");
-        jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
-        lbl_digite_su_nombre.setForeground(new java.awt.Color(0, 0, 0));
+        lbl_digite_su_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_digite_su_nombre.setText("Digite su nombre para empezar a jugar");
-        jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
+        jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        campo_nombre.setBackground(new java.awt.Color(255, 255, 255));
+        campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
         campo_nombre.setText("Ingrese su nombre...");
         campo_nombre.setBorder(null);
@@ -87,69 +102,70 @@ public class interfaz_memorabble extends javax.swing.JFrame {
                 campo_nombreKeyPressed(evt);
             }
         });
-        jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 230, -1));
+        jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 400, 30));
 
         lbl_separador.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_separador.setOpaque(true);
-        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 220, 2));
+        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 400, 2));
 
         btn_jugar.setBackground(new java.awt.Color(0, 102, 102));
-        btn_jugar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        btn_jugar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         btn_jugar.setForeground(new java.awt.Color(255, 255, 255));
         btn_jugar.setText("Jugar");
         btn_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_jugar.setBorderPainted(false);
+        btn_jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_jugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 80, 30));
+        jPanel1.add(btn_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 90, 40));
 
         btn_como_jugar.setBackground(new java.awt.Color(0, 102, 102));
-        btn_como_jugar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_como_jugar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_como_jugar.setForeground(new java.awt.Color(255, 255, 255));
         btn_como_jugar.setText("¿Como jugar?");
         btn_como_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_como_jugar.setBorderPainted(false);
+        btn_como_jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_como_jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_como_jugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_como_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
+        jPanel1.add(btn_como_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 320, 130, 30));
 
         btn_para_que_sirve.setBackground(new java.awt.Color(0, 102, 102));
-        btn_para_que_sirve.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btn_para_que_sirve.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         btn_para_que_sirve.setForeground(new java.awt.Color(255, 255, 255));
         btn_para_que_sirve.setText("¿Para qué sirve?");
         btn_para_que_sirve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_para_que_sirve.setBorderPainted(false);
+        btn_para_que_sirve.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btn_para_que_sirve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_para_que_sirveActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_para_que_sirve, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 110, 30));
+        jPanel1.add(btn_para_que_sirve, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, 130, 30));
 
         lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
         lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
         lbl_imagen_lateral.setOpaque(true);
-        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 140, 320));
+        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 140, 370));
 
         lbl_separador_inferior.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador_inferior.setOpaque(true);
-        jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 440, 20));
+        jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 600, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,8 +196,8 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
             dispose();
-       interfaz_jugable ij=new interfaz_jugable();
-       ij.setVisible(true); 
+            gameLauncher lanzador = new gameLauncher();
+            lanzador.nuevoJuego();
         }  
     }//GEN-LAST:event_btn_jugarActionPerformed
 
@@ -243,6 +259,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private javax.swing.JButton btn_jugar;
     private javax.swing.JButton btn_para_que_sirve;
     private javax.swing.JTextField campo_nombre;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_bienvenido;
     private javax.swing.JLabel lbl_digite_su_nombre;
