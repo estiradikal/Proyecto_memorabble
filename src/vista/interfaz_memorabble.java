@@ -128,6 +128,11 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         btn_como_jugar.setText("¿Como jugar?");
         btn_como_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_como_jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_como_jugar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_como_jugarMouseClicked(evt);
+            }
+        });
         btn_como_jugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_como_jugarActionPerformed(evt);
@@ -172,17 +177,25 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_como_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_como_jugarActionPerformed
-        JOptionPane.showMessageDialog(null,"Instrucciones: "
+        /*JOptionPane.showMessageDialog(null,"Instrucciones: "
         + "\n" + "* Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán."
         + "\n" + "* Después saldrá una pregunta."
         + "\n" + "* La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada."
         + "\n" + "* ¡OJO! Es posible  que haya que pulsar más de una ficha..."
-        + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");
+        + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");*/
+        como_jugar cj=new como_jugar();
+        cj.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btn_como_jugarActionPerformed
 
     private void btn_para_que_sirveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_para_que_sirveActionPerformed
-       JOptionPane.showMessageDialog(null,"Un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. \n"
-               + "Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para \nrecordar dónde guardamos nuestras cosas.");
+      /* JOptionPane.showMessageDialog(null,"Un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. \n"
+               + "Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para \nrecordar dónde guardamos nuestras cosas.");*/
+      
+      como_sirve cs=new como_sirve();
+      cs.setVisible(true);
+      dispose();
+      
     }//GEN-LAST:event_btn_para_que_sirveActionPerformed
 
     private void btn_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugarActionPerformed
@@ -218,6 +231,11 @@ public class interfaz_memorabble extends javax.swing.JFrame {
             campo_nombre.setText("");
         }
     }//GEN-LAST:event_campo_nombreKeyPressed
+
+    private void btn_como_jugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_como_jugarMouseClicked
+        como_jugar cj=new como_jugar();
+        cj.setVisible(true);
+    }//GEN-LAST:event_btn_como_jugarMouseClicked
 
     /**
      * @param args the command line arguments
