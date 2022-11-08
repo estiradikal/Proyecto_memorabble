@@ -6,4 +6,4 @@
 /dist/
 
 # ignorar el mainProvisional.java (donde puede experimentar cualquiera en su rama)
-/src/interfaces/mainProvisional.java
+/src/controlador/mainProvisional.java
