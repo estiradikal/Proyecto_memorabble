@@ -16,7 +16,7 @@ import java.time.LocalTime;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-04-2022
     Fecha última modificación: 11-04-2022
-    Versión: 1.1
+    Versión: 1.2
     Licencia: GNU-GPL
 */
 
