@@ -76,6 +76,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         asignarFichas();
         mostrarCriterio(5);    
+        
     }
 
     /**
