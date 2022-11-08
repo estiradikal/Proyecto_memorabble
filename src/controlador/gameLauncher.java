@@ -1,6 +1,7 @@
 
-package interfaces;
+package controlador;
 
+import vista.interfaz_jugable;
 import java.time.LocalTime;
 
 /*
@@ -11,7 +12,7 @@ import java.time.LocalTime;
     Archivo: gameLauncher.java
     Autores (A-Z): 
             * Alejandro Guerrero <alejandro.cano@correounivalle.edu.co> - 202179652-3743
-            * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3742
+            * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-04-2022
     Fecha última modificación: 11-04-2022
@@ -29,7 +30,7 @@ public class gameLauncher {
     private LocalTime tiempoInicio;    
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     
-    gameLauncher(){
+    public gameLauncher(){
         tiempoInicio = LocalTime.now();
         tiempoInicioHoras = tiempoInicio.getHour();
         tiempoInicioMinutos = tiempoInicio.getMinute();

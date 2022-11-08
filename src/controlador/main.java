@@ -1,4 +1,8 @@
-package interfaces;
+package controlador;
+
+
+
+import vista.interfaz_memorabble;
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  

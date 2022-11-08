@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package vista;
 
+import controlador.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
 
@@ -63,8 +64,6 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(90, 146, 45));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setMaximumSize(new java.awt.Dimension(600, 500));
-        setPreferredSize(new java.awt.Dimension(600, 435));
         setSize(new java.awt.Dimension(0, 0));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -197,8 +196,8 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         else{
             JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
             dispose();
-        gameLauncher lanzador = new gameLauncher();
-        lanzador.nuevoJuego();
+            gameLauncher lanzador = new gameLauncher();
+            lanzador.nuevoJuego();
         }  
     }//GEN-LAST:event_btn_jugarActionPerformed
 

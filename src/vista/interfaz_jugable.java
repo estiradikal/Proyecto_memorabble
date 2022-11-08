@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces;
+package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -266,7 +266,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
      
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
-            generadores.colores color = new generadores.colores();
+            modelo.colores color = new modelo.colores();
             
             if(misFichas.get(numRandom).getText() == "EMPTY"){
                 asignarFichasColor(numRandom, color.generarColor());
@@ -326,7 +326,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     private void generarCriterioColor(){
-        generadores.colores color = new generadores.colores();
+        modelo.colores color = new modelo.colores();
         
         lbl_imagen_criterio.setText(color.generarColor());
         
@@ -353,8 +353,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     private void generarCriterioForma(){
-        generadores.formas forma = new generadores.formas();
-        generadores.colores color = new generadores.colores();
+        modelo.formas forma = new modelo.formas();
+        modelo.colores color = new modelo.colores();
         
         lbl_imagen_criterio.setText(color.generarColor());
         

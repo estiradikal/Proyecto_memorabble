@@ -1,4 +1,4 @@
-package generadores;
+package modelo;
 
 
 

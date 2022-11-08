@@ -1,15 +1,16 @@
-package generadores;
+package modelo;
 
 
 
 
 import java.util.ArrayList;
+
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
     LABORATORIO  
     Profesor: Luis Romo Portilla
 
-    Archivo: formas.java
+    Archivo: colores.java
     Autores (A-Z): 
             * Alejandro Guerrero <alejandro.cano@correounivalle.edu.co> - 202179652-3743
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3742
@@ -20,23 +21,21 @@ import java.util.ArrayList;
     Licencia: GNU-GPL
 */
 
-public class formas{
+public class colores{
     
-    java.util.List<String> misFormas = new ArrayList<>();
+    java.util.List<String> misColores = new ArrayList<>();
     
-    public formas(){
-        misFormas.add("CIRCULO");
-        misFormas.add("CORAZON");
-        misFormas.add("CUADRADO");
-        misFormas.add("PICA");
-        misFormas.add("ROMBO");
-        misFormas.add("TREBOL");
-        misFormas.add("TRIANGULO");
+    public colores (){
+        misColores.add("AMARILLO");
+        misColores.add("AZUL");
+        misColores.add("NEGRO");
+        misColores.add("ROJO");
+        misColores.add("VERDE");
     }   
  
-    public String generarForma(){
+    public String generarColor(){
         int numeroRandom;
-        numeroRandom = (int) 0 + (int) (Math.random() * ((misFormas.size() - 1) + 1));        
-        return misFormas.get(numeroRandom);
+        numeroRandom = (int) 0 + (int) (Math.random() * ((misColores.size() - 1) + 1));        
+        return misColores.get(numeroRandom);
     }
 }
