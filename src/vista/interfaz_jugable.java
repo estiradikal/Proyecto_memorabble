@@ -20,7 +20,7 @@ import java.util.*;
     Archivo: interfaz_jugable.java
     Autores (A-Z): 
             * Alejandro Guerrero <alejandro.cano@correounivalle.edu.co> - 202179652-3743
-            * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3742
+            * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
     Fecha última modificación: 11-04-2022
@@ -428,11 +428,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
         aciertos += 1;
         puntuacion += 100;
         lbl_puntuacionActual.setText(Integer.toString(puntuacion));   
+        
         for(JButton fichaActual: misFichas){
             if(fichaActual.getText() == lbl_imagen_criterio.getText()){ // Comprobación si se seleccionaron todas las figuras que coinciden con el criterio (Por construir...)
                 restantes += 1;              
             }
-        }  
+        } 
         
         if(restantes<=0){
             JOptionPane.showMessageDialog(null, "Ganaste esta ronda, vamos por la siguiente!");
