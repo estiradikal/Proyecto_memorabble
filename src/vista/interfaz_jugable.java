@@ -77,7 +77,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         iniciarCriterio();
         asignarFichas();
         syncBotonesStrings();
-        mostrarCriterio(5);    
+        mostrarCriterio(8);    
     }
 
     /**
@@ -253,20 +253,22 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     public void asignarFichas(){
-        int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
-        
+        int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
         for(int fichaActual = 0; fichaActual < dificultad; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
             llenarFicha(misFichas.get(numRandom), lbl_imagen_criterio.getText());
         }
-     
-        for(int fichaActual = 0; fichaActual < dificultad*4; fichaActual ++){     
+
+        for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
-            
+
             if(misFichas.get(numRandom).getText() == "EMPTY"){
-                llenarFicha(misFichas.get(numRandom), color.generarColor());
+                if(criterio == 1)
+                    llenarFicha(misFichas.get(numRandom), color.generarColor());
+                else if(criterio == 2)
+                    llenarFicha(misFichas.get(numRandom), forma.generarForma());
             }
-        }
+        } 
     }
     
     public void llenarFicha(JButton fichaActual, String criterioActual){       
@@ -323,8 +325,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
  
         criterio = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); // Selecciona un criterio al azar: Color = 1, Forma = 2,...        
         
-        criterio = 1;
-        
         if(criterio == 1){
             color.generarCriterioColor(lbl_imagen_criterio);                   
         }
@@ -370,7 +370,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     
     private void limpiarCriterio(){
         lbl_imagen_criterio.setText("EMPTY");
-        lbl_imagen_criterio.setIcon(new ImageIcon(imagenVacia.getImage().getScaledInstance(lbl_imagen_criterio.getWidth(), lbl_imagen_criterio.getHeight(), Image.SCALE_SMOOTH)));
+        lbl_imagen_criterio.setIcon(new ImageIcon(imagenVacia.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
      public void addAcierto(){
