@@ -48,6 +48,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         initComponents();
         iniciarFichas();       
         iniciarCriterio();
+        syncBotonesStrings();
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
