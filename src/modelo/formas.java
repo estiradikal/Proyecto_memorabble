@@ -27,11 +27,9 @@ public class formas{
     public formas(){
         misFormas.add("CIRCULO");
         misFormas.add("CORAZON");
-        misFormas.add("CUADRADO");
         misFormas.add("PICA");
         misFormas.add("ROMBO");
         misFormas.add("TREBOL");
-        misFormas.add("TRIANGULO");
     }   
  
     public String generarForma(){
