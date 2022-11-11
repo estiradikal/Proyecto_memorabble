@@ -2,6 +2,9 @@ package modelo;
 
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.ImageIcon;
+import java.awt.Image;
+
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
     LABORATORIO  
@@ -38,58 +41,148 @@ public class formas{
     
     public void generarCriterioForma(JLabel lbl_criterio){
         modelo.colores color = new modelo.colores();
+        ImageIcon miImagen = new ImageIcon(); 
         
-        lbl_criterio.setText(color.generarColor());
+        lbl_criterio.setText(generarForma());
         
         switch (lbl_criterio.getText()) {
-            case "AMARILLO":
-                lbl_criterio.setBackground(new java.awt.Color(255, 255, 0));                
+            case "CIRCULO":
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo.png"));              
                 break;
-            case "AZUL":
-                lbl_criterio.setBackground(new java.awt.Color(0, 0, 255));
+            case "CORAZON":
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon.png"));              
                 break;
-            case "ROJO":
-                lbl_criterio.setBackground(new java.awt.Color(255, 0, 0));
+            case "PICA":
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica.png"));              
                 break;
-            case "VERDE":
-                lbl_criterio.setBackground(new java.awt.Color(0, 255, 0));
+            case "ROMBO":
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo.png"));              
+                break;
+            case "TREBOL":
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol.png"));              
                 break;
             default:
                 System.out.println("Se recibió " + lbl_criterio.getText() + " como color");
                 break;
         } 
+        
+        //lbl_criterio.setIcon(new ImageIcon(miImagen.getImage()));
+        lbl_criterio.setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
     public void asignarForma(JButton fichaActual, String criterioActual){        
-        ImageIcon miImagen = new ImageIcon();    
+        int numeroRandom;
+        numeroRandom = (int) 1 + (int) (Math.random() * ((4 - 1) + 1)); 
+        
+        ImageIcon miImagen = new ImageIcon();          
         
         switch (criterioActual) {
             case "CIRCULO":
-                fichaActual.setText("CIRCULO");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
-                break;
+            fichaActual.setText("CIRCULO");
+            
+            switch (numeroRandom) {
+                case 1:                    
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-amarillo.png"));
+                    break;
+                case 2:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-azul.png"));
+                    break;
+                case 3:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-rojo.png"));
+                    break;
+                case 4:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-verde.png"));
+                    break;
+                default:
+                    break;
+            }
+            break;
+
             case "CORAZON":
                 fichaActual.setText("CORAZON");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
-                break;
+                
+                switch (numeroRandom) {
+                case 1:                    
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
+                    break;
+                case 2:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
+                    break;
+                case 3:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
+                    break;
+                case 4:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
+                    break;
+                default:
+                    break;
+                }
+            break;
+            
             case "PICA":
                 fichaActual.setText("PICA");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-negro.png"));
-                break;
+                
+                switch (numeroRandom) {
+                case 1:                    
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-amarillo.png"));
+                    break;
+                case 2:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-azul.png"));
+                    break;
+                case 3:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-rojo.png"));
+                    break;
+                case 4:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-verde.png"));
+                    break;
+                default:
+                    break;
+                }
+            break;
+            
             case "ROMBO":
                 fichaActual.setText("ROMBO");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
-                break;
+                
+                switch (numeroRandom) {
+                case 1:                    
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-amarillo.png"));
+                    break;
+                case 2:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-azul.png"));
+                    break;
+                case 3:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-rojo.png"));
+                    break;
+                case 4:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-verde.png"));
+                    break;
+                default:
+                    break;
+                }
+            break;
+            
             case "TREBOL":
                 fichaActual.setText("TREBOL");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
-                break;
-            default:                
-                break;
-        } 
+                
+                switch (numeroRandom) {
+                case 1:                    
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-amarillo.png"));
+                    break;
+                case 2:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-azul.png"));
+                    break;
+                case 3:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-rojo.png"));
+                    break;
+                case 4:
+                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-verde.png"));
+                    break;
+                default:
+                    break;
+                }
+            break;
+        }
         
         fichaActual.setIcon(new ImageIcon(miImagen.getImage()));
-        // ADAPTABLE
-        //misFichas.get(_direccion).setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
 }
