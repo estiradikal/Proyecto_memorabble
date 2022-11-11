@@ -1,8 +1,5 @@
 package modelo;
 
-
-
-
 import java.util.ArrayList;
 
 /*
@@ -22,13 +19,11 @@ import java.util.ArrayList;
 */
 
 public class colores{
-    
     java.util.List<String> misColores = new ArrayList<>();
     
     public colores (){
         misColores.add("AMARILLO");
         misColores.add("AZUL");
-        misColores.add("NEGRO");
         misColores.add("ROJO");
         misColores.add("VERDE");
     }   
