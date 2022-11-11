@@ -38,6 +38,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private int restantes = 0;
     private int criterio;
     private java.util.List<JButton> misFichas = new ArrayList<>();
+    private java.util.List<String> misFichasStr = new ArrayList<>();
     private JLabel lbl_imagen_criterio = new JLabel();
 
     /**
@@ -200,7 +201,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
            
             if(source.getText() == lbl_imagen_criterio.getText()){
                 String criterio=lbl_imagen_criterio.getText();
-                llenarFicha(1, criterio, source);                
+                llenarFicha(source, criterio);                
                 source.setText("EPIC!");
                 source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
@@ -215,8 +216,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
             
-            misFichas.add(new JButton());
+            misFichas.add(new JButton());            
             misFichas.get(fichaActual).setText("EMPTY");     
+            misFichasStr.add("");
         
             misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));   
             misFichas.get(fichaActual).setBackground(new java.awt.Color(90, 90, 90));
@@ -250,7 +252,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         for(int fichaActual = 0; fichaActual < dificultad; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
-            llenarFicha(numRandom, lbl_imagen_criterio.getText(), misFichas.get(numRandom));
+            llenarFicha(misFichas.get(numRandom), lbl_imagen_criterio.getText());
         }
      
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
@@ -258,12 +260,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
             modelo.colores color = new modelo.colores();
             
             if(misFichas.get(numRandom).getText() == "EMPTY"){
-                llenarFicha(numRandom, color.generarColor(), misFichas.get(numRandom));
+                llenarFicha(misFichas.get(numRandom), color.generarColor());
             }
         }
     }
     
-    private void llenarFicha(int _direccion, String criterioActual, JButton _boton){
+    private void llenarFicha(JButton _boton, String criterioActual){
         colores miColor = new colores();
         ImageIcon miImagen = new ImageIcon();
         //miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));       
@@ -271,23 +273,19 @@ public class interfaz_jugable extends javax.swing.JFrame {
         //POR COLOR
         switch (criterioActual) {
             case "AMARILLO":
-                misFichas.get(_direccion).setText("AMARILLO");
+                _boton.setText("AMARILLO");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
                 break;
             case "AZUL":
-                misFichas.get(_direccion).setText("AZUL");
+                _boton.setText("AZUL");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
                 break;
-            case "NEGRO":
-                misFichas.get(_direccion).setText("NEGRO");
-                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-negro.png"));
-                break;
             case "ROJO":
-                misFichas.get(_direccion).setText("ROJO");
+                _boton.setText("ROJO");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
                 break;
             case "VERDE":
-                misFichas.get(_direccion).setText("VERDE");
+                _boton.setText("VERDE");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
                 break;
             default:                
@@ -297,23 +295,23 @@ public class interfaz_jugable extends javax.swing.JFrame {
         //POR FORMA
         switch (criterioActual) {
             case "CIRCULO":
-                misFichas.get(_direccion).setText("CIRCULO");
+                _boton.setText("CIRCULO");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
                 break;
             case "CORAZON":
-                misFichas.get(_direccion).setText("CORAZON");
+                _boton.setText("CORAZON");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
                 break;
             case "PICA":
-                misFichas.get(_direccion).setText("PICA");
+                _boton.setText("PICA");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-negro.png"));
                 break;
             case "ROMBO":
-                misFichas.get(_direccion).setText("ROMBO");
+                _boton.setText("ROMBO");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
                 break;
             case "TREBOL":
-                misFichas.get(_direccion).setText("TREBOL");
+                _boton.setText("TREBOL");
                 miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
                 break;
             default:                
@@ -332,6 +330,14 @@ public class interfaz_jugable extends javax.swing.JFrame {
             fichaActual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));         
             fichaActual.setBackground(new java.awt.Color(200, 200, 200));
         } 
+    }
+    
+    private void syncBotonesStrings(){
+        int i = 0;
+        for(JButton fichaActual: misFichas){
+            misFichasStr.set(i, fichaActual.getText());
+            i++;
+        }
     }
  
     private void iniciarCriterio(){
