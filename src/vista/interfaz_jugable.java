@@ -4,12 +4,16 @@
  */
 package vista;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import java.time.LocalTime;
 import java.util.*;
+
+import modelo.colores;
 
 
 /*
@@ -31,7 +35,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     private int vidas, aciertos, fallos, rondaActual, puntuacion, dificultad;
-    private int restantes = dificultad+1;
+    private int restantes = 0;
     private int criterio;
     private java.util.List<JButton> misFichas = new ArrayList<>();
     private JLabel lbl_imagen_criterio = new JLabel();
@@ -195,22 +199,25 @@ public class interfaz_jugable extends javax.swing.JFrame {
             JButton source = (JButton) e.getSource();             
            
             if(source.getText() == lbl_imagen_criterio.getText()){
+                String criterio=lbl_imagen_criterio.getText();
+                llenarFicha(1, criterio, source);                
                 source.setText("EPIC!");
                 source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
             }
+            else if(source.getText() == "EPIC!"){
+               
+            }
             else{
                 addFallo();
             }   
-            source.setEnabled(false);
         };
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
             
             misFichas.add(new JButton());
-            misFichas.get(fichaActual).setEnabled(false);
-            misFichas.get(fichaActual).setText("EMPTY");
-            
+            misFichas.get(fichaActual).setText("EMPTY");     
+        
             misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));   
             misFichas.get(fichaActual).setBackground(new java.awt.Color(90, 90, 90));
             misFichas.get(fichaActual).setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -243,7 +250,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         for(int fichaActual = 0; fichaActual < dificultad; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
-            asignarFichasColor(numRandom, lbl_imagen_criterio.getText());
+            llenarFicha(numRandom, lbl_imagen_criterio.getText(), misFichas.get(numRandom));
         }
      
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
@@ -251,40 +258,78 @@ public class interfaz_jugable extends javax.swing.JFrame {
             modelo.colores color = new modelo.colores();
             
             if(misFichas.get(numRandom).getText() == "EMPTY"){
-                asignarFichasColor(numRandom, color.generarColor());
+                llenarFicha(numRandom, color.generarColor(), misFichas.get(numRandom));
             }
         }
     }
     
-    private void asignarFichasColor(int _direccion, String criterioActual){
+    private void llenarFicha(int _direccion, String criterioActual, JButton _boton){
+        colores miColor = new colores();
+        ImageIcon miImagen = new ImageIcon();
+        //miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));       
+        
+        //POR COLOR
         switch (criterioActual) {
             case "AMARILLO":
                 misFichas.get(_direccion).setText("AMARILLO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 255, 0));                
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
                 break;
             case "AZUL":
                 misFichas.get(_direccion).setText("AZUL");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 255));
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
                 break;
             case "NEGRO":
                 misFichas.get(_direccion).setText("NEGRO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 0));
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-negro.png"));
                 break;
             case "ROJO":
                 misFichas.get(_direccion).setText("ROJO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 0, 0));
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
                 break;
             case "VERDE":
                 misFichas.get(_direccion).setText("VERDE");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 255, 0));
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
                 break;
             default:                
                 break;
         }  
+        
+        //POR FORMA
+        switch (criterioActual) {
+            case "CIRCULO":
+                misFichas.get(_direccion).setText("CIRCULO");
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
+                break;
+            case "CORAZON":
+                misFichas.get(_direccion).setText("CORAZON");
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
+                break;
+            case "PICA":
+                misFichas.get(_direccion).setText("PICA");
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-negro.png"));
+                break;
+            case "ROMBO":
+                misFichas.get(_direccion).setText("ROMBO");
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
+                break;
+            case "TREBOL":
+                misFichas.get(_direccion).setText("TREBOL");
+                miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
+                break;
+            default:                
+                break;
+        }  
+        
+        //misFichas.get(_direccion).setIcon(new ImageIcon(miImagen.getImage())); 
+        _boton.setIcon(new ImageIcon(miImagen.getImage()));
+        
+        // ADAPTABLE
+        //misFichas.get(_direccion).setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
     
     private void ocultarFichas(){
         for(JButton fichaActual: misFichas){
+            fichaActual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));         
             fichaActual.setBackground(new java.awt.Color(200, 200, 200));
         } 
     }
@@ -319,9 +364,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
             case "AZUL":
                 lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
                 break;
-            case "NEGRO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
-                break;
             case "ROJO":
                 lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
                 break;
@@ -347,9 +389,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
             case "AZUL":
                 lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
                 break;
-            case "NEGRO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
-                break;
             case "ROJO":
                 lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
                 break;
@@ -360,10 +399,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
                 System.out.println("Se recibió " + lbl_imagen_criterio.getText() + " como color");
                 break;
         } 
-    }
-    
-    private void llenarFichas(){
-        
     }
     
     public void mostrarCriterio(int segundos){
