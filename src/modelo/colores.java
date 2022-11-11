@@ -1,8 +1,8 @@
 package modelo;
 
 import java.util.ArrayList;
-import javax.swing.ImageIcon;
 import javax.swing.*;
+import javax.swing.ImageIcon;
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -62,7 +62,7 @@ public class colores{
     
     public void asignarColor(JButton fichaActual, String criterioActual){ 
         int numeroRandom;
-        numeroRandom = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); 
+        numeroRandom = (int) 1 + (int) (Math.random() * ((5 - 1) + 1)); 
         
         ImageIcon miImagen = new ImageIcon();          
         
@@ -167,7 +167,5 @@ public class colores{
         }
         
         fichaActual.setIcon(new ImageIcon(miImagen.getImage()));
-        // ADAPTABLE
-        //misFichas.get(_direccion).setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(ancho, alto, Image.SCALE_SMOOTH)));
     }
 }
