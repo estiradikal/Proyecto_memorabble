@@ -4,12 +4,14 @@
  */
 package vista;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import javax.swing.JOptionPane;
 import java.time.LocalTime;
 import java.util.*;
+
+import modelo.*;
 
 
 /*
@@ -23,18 +25,26 @@ import java.util.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-07-2022
-    Versión: 0.3
+    Fecha última modificación: 11-11-2022
+    Versión: 0.5
     Licencia: GNU-GPL
 */
+
 public class interfaz_jugable extends javax.swing.JFrame {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     private int vidas, aciertos, fallos, rondaActual, puntuacion, dificultad;
-    private int restantes = dificultad+1;
-    private int criterio;
+    private int restantes = 0;
+    private int criterio;    
+    private ImageIcon imagenVacia = new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png"));
     private java.util.List<JButton> misFichas = new ArrayList<>();
+    private java.util.List<String> misFichasImg = new ArrayList();
+    private java.util.List<String> misFichasStr = new ArrayList<>();
     private JLabel lbl_imagen_criterio = new JLabel();
+    
+    // Instancias de clases
+    public colores color = new colores();
+    public formas forma = new formas();
 
     /**
      * Creates new form interfaz_jugable
@@ -42,7 +52,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
     public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos, int _vidas, int _aciertos, int _fallos, int _rondaActual, int _puntuacion, int _dificultad) {        
         initComponents();
         iniciarFichas();       
-        iniciarCriterio();
+        
+        syncBotonesStrings();
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -62,21 +73,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
         
         // Definiendo puntuacion inicial
         lbl_puntuacionActual.setText(Integer.toString(puntuacion));        
-        
-        // Habilitando los labels de las vidas según la cantidad de vidas
-        if(vidas>=1){
-            lbl_vida1.setEnabled(true);
-        }
-        if(vidas>=2){
-            lbl_vida2.setEnabled(true);
-        }
-        if(vidas>=3){
-            lbl_vida3.setEnabled(true);
-        }    
-        
+ 
+        actualizarVidas();
+        iniciarCriterio();
         asignarFichas();
-        mostrarCriterio(5);    
-        
+        syncBotonesStrings();
+        mostrarCriterio(8);   
     }
 
     /**
@@ -178,8 +180,28 @@ public class interfaz_jugable extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void actualizarVidas(){
+        if(vidas>=1){
+            lbl_vida1.setEnabled(true);
+        }
+        else{
+            lbl_vida1.setEnabled(false);
+        }
+        if(vidas>=2){
+            lbl_vida2.setEnabled(true);
+        }
+        else{
+            lbl_vida2.setEnabled(false);
+        }
+        if(vidas>=3){
+            lbl_vida3.setEnabled(true);
+        }
+        else{
+            lbl_vida3.setEnabled(false);
+        }
+    }
     
-    private void iniciarFichas(){
+    public void iniciarFichas(){
         int cantidadFichas;
         int posX, posY, ancho, alto, filas, columnas;
     
@@ -196,25 +218,27 @@ public class interfaz_jugable extends javax.swing.JFrame {
             JButton source = (JButton) e.getSource();             
            
             if(source.getText() == lbl_imagen_criterio.getText()){
+                String criterio=lbl_imagen_criterio.getText();
+                //llenarFicha(source, "nope", criterio);                
                 source.setText("EPIC!");
                 source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
             }
+            else if(source.getText() == "EPIC!"){}
             else{
                 addFallo();
             }   
-            source.setEnabled(false);
         };
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
             
-            misFichas.add(new JButton());
-            misFichas.get(fichaActual).setEnabled(false);
-            misFichas.get(fichaActual).setText("EMPTY");
-            
+            misFichas.add(new JButton());            
+            misFichas.get(fichaActual).setText("EMPTY");     
+            misFichasStr.add("");
+            misFichasImg.add("");
+        
             misFichas.get(fichaActual).setFont(new java.awt.Font("Segoe UI", 0, 0));   
-            misFichas.get(fichaActual).setBackground(new java.awt.Color(90, 90, 90));
-            misFichas.get(fichaActual).setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+            misFichas.get(fichaActual).setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));
             misFichas.get(fichaActual).addActionListener(oyenteDeFichas);
             
             jPanel1.add(misFichas.get(fichaActual), new org.netbeans.lib.awtextra.AbsoluteConstraints(posX, posY, ancho, alto));
@@ -227,144 +251,70 @@ public class interfaz_jugable extends javax.swing.JFrame {
         }     
     }
     
-    private void habilitarFichas(){
-        for(JButton fichaActual: misFichas){
-            fichaActual.setEnabled(true);
-        } 
-    }
-    
-    private void deshabilitarFichas(){
-        for(JButton fichaActual: misFichas){
-            fichaActual.setEnabled(false);
-        } 
-    }
-    
-    private void asignarFichas(){
-        int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
-        
+    public void asignarFichas(){
+        int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
         for(int fichaActual = 0; fichaActual < dificultad; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
-            asignarFichasColor(numRandom, lbl_imagen_criterio.getText());
+            llenarFicha(misFichas.get(numRandom), misFichasImg.get(numRandom), lbl_imagen_criterio.getText());
         }
-     
+
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
-            numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
-            modelo.colores color = new modelo.colores();
+            numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
+
+            
+            criterio = 1;
             
             if(misFichas.get(numRandom).getText() == "EMPTY"){
-                asignarFichasColor(numRandom, color.generarColor());
+                if(criterio == 1)
+                    llenarFicha(misFichas.get(numRandom), misFichasImg.get(numRandom), color.generarColor());
+                else if(criterio == 2)
+                    llenarFicha(misFichas.get(numRandom), misFichasImg.get(numRandom), forma.generarForma());
             }
-        }
+        } 
     }
     
-    private void asignarFichasColor(int _direccion, String criterioActual){
-        switch (criterioActual) {
-            case "AMARILLO":
-                misFichas.get(_direccion).setText("AMARILLO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 255, 0));                
-                break;
-            case "AZUL":
-                misFichas.get(_direccion).setText("AZUL");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 255));
-                break;
-            case "NEGRO":
-                misFichas.get(_direccion).setText("NEGRO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 0, 0));
-                break;
-            case "ROJO":
-                misFichas.get(_direccion).setText("ROJO");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(255, 0, 0));
-                break;
-            case "VERDE":
-                misFichas.get(_direccion).setText("VERDE");
-                misFichas.get(_direccion).setBackground(new java.awt.Color(0, 255, 0));
-                break;
-            default:                
-                break;
+    public void llenarFicha(JButton fichaActual, String fichaActualImg, String criterioActual){       
+
+        if(criterio == 1){
+            color.asignarColor(fichaActual, fichaActualImg, criterioActual);            
+            
+        }
+        else if(criterio == 2){
+            forma.asignarForma(fichaActual, fichaActualImg, criterioActual); // TAREA: IMPLEMENTAR LO MISMO DE COLOR AQUI PARA IMAGESOURCE
+        }
+        else{
+            System.out.println("Este criterio no existe :( ");
         }  
     }
     
-    private void ocultarFichas(){
+    public void ocultarFichas(){
         for(JButton fichaActual: misFichas){
-            fichaActual.setBackground(new java.awt.Color(200, 200, 200));
+            fichaActual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));         
         } 
     }
- 
-    private void iniciarCriterio(){
+    
+    public void syncBotonesStrings(){
+        int i = 0;
+        for(JButton fichaActual: misFichas){
+            misFichasStr.set(i, fichaActual.getText());
+            i++;
+        }
+    }
+    
+    public void iniciarCriterio(){
         lbl_imagen_criterio.setVisible(false);
-        jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));    
-  
-        lbl_imagen_criterio.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));  
         lbl_imagen_criterio.setFont(new java.awt.Font("Segoe UI", 0, 0)); // NOI18N
         lbl_imagen_criterio.setOpaque(true);
-        
+ 
         criterio = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); // Selecciona un criterio al azar: Color = 1, Forma = 2,...        
         
         if(criterio == 1){
-            generarCriterioColor();                   
+            color.generarCriterioColor(lbl_imagen_criterio);                   
         }
         else if(criterio == 2){
-            generarCriterioForma();
+            forma.generarCriterioForma(lbl_imagen_criterio);
         }     
-    }
-    
-    private void generarCriterioColor(){
-        modelo.colores color = new modelo.colores();
-        
-        lbl_imagen_criterio.setText(color.generarColor());
-        
-        switch (lbl_imagen_criterio.getText()) {
-            case "AMARILLO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 255, 0));                
-                break;
-            case "AZUL":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
-                break;
-            case "NEGRO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
-                break;
-            case "ROJO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
-                break;
-            case "VERDE":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 255, 0));
-                break;
-            default:
-                System.out.println("Se recibió " + lbl_imagen_criterio.getText() + " como color");
-                break;
-        } 
-    }
-    
-    private void generarCriterioForma(){
-        modelo.formas forma = new modelo.formas();
-        modelo.colores color = new modelo.colores();
-        
-        lbl_imagen_criterio.setText(color.generarColor());
-        
-        switch (lbl_imagen_criterio.getText()) {
-            case "AMARILLO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 255, 0));                
-                break;
-            case "AZUL":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 255));
-                break;
-            case "NEGRO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 0, 0));
-                break;
-            case "ROJO":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(255, 0, 0));
-                break;
-            case "VERDE":
-                lbl_imagen_criterio.setBackground(new java.awt.Color(0, 255, 0));
-                break;
-            default:
-                System.out.println("Se recibió " + lbl_imagen_criterio.getText() + " como color");
-                break;
-        } 
-    }
-    
-    private void llenarFichas(){
-        
     }
     
     public void mostrarCriterio(int segundos){
@@ -386,19 +336,28 @@ public class interfaz_jugable extends javax.swing.JFrame {
                 }
                 
                 ocultarFichas();
-                habilitarFichas();
             }
         }, delay);
     }
     
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        finalizarPartida();
-        interfaz_memorabble im = new interfaz_memorabble();
-        im.setVisible(true);  
-        dispose();
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
-
-    public void addAcierto(){
+    private void limpiarFichas(){
+        for(JButton fichaActual: misFichas){
+            fichaActual.setText("EMPTY");
+        }
+    }
+    
+    private void limpiarFichasStr(){
+        for(String fichaActual: misFichasStr){
+            fichaActual = "EMPTY";
+        }
+    }
+    
+    private void limpiarCriterio(){
+        lbl_imagen_criterio.setText("EMPTY");
+        lbl_imagen_criterio.setIcon(new ImageIcon(imagenVacia.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
+    }
+    
+     public void addAcierto(){
         restantes = 0;
         aciertos += 1;
         puntuacion += 100;
@@ -455,33 +414,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
         
-        String titulo = "";
-        
-        if(aciertos>=0 && aciertos<5){
-            titulo = "Pato cocinado";
-        }
-        else if(aciertos>=5 && aciertos<10){
-            titulo = "Pato en sandalias";
-        }
-        else if(aciertos>=10 && aciertos<15){
-            titulo = "Pato en bermudas ";
-        }
-        else if(aciertos>=15 && aciertos<20){
-            titulo = "Pato aesthetic";
-        }
-        else if(aciertos>=20 && aciertos<40){
-            titulo = "Pato con traje";
-        }
-        else if(aciertos>=40 && aciertos<80){
-            titulo = "Pato con Jordans";
-        }
-        else if(aciertos>=80){
-            titulo = "Pato supremo";
-        }
+        patos miPato = new patos();
         
         JOptionPane.showMessageDialog(null, "Resumen de partida" 
                 + "\n"
-                + "\n" + "Titulo conseguido: " + titulo
+                + "\n" + "Titulo conseguido: " + miPato.definirPato(aciertos)
                 + "\n" + "Puntaje total: " + puntuacion
                 + "\n" + "Rondas jugadas: " + rondaActual
                 + "\n" + "Aciertos: " + aciertos 
@@ -493,6 +430,13 @@ public class interfaz_jugable extends javax.swing.JFrame {
         interfaz_memorabble im = new interfaz_memorabble();
         im.setVisible(true);
     }
+    
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        finalizarPartida();
+        interfaz_memorabble im = new interfaz_memorabble();
+        im.setVisible(true);  
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
