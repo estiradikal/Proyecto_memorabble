@@ -219,7 +219,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
            
             if(source.getText() == lbl_imagen_criterio.getText()){
                 String criterio=lbl_imagen_criterio.getText();
-                llenarFicha(source, "nope", criterio);                
+                //llenarFicha(source, "nope", criterio);                
                 source.setText("EPIC!");
                 source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
