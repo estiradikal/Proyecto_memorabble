@@ -164,7 +164,7 @@ public class como_jugar extends javax.swing.JFrame {
 
         jTextPane3.setEditable(false);
         jTextPane3.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
-        jTextPane3.setText("\n1. Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán. \n2. El juego te mostrará una forma o un color. \n3.  Selecciona las figuras que coincidan.\n\n ¡OJO! Es posible  que haya que pulsar más de una ficha... \n\nRecuerda:\n✔  Es importante que memorices las formas, los colores y la posición de cada ficha.\n¡Un clic en falso y perderas un preciado corazon!");
+        jTextPane3.setText("\n\n\n1. El juego te mostrará varias fichas con figuras específicas, cada una tiene una forma y un color, MEMORIZA TODAS LAS QUE PUEDAS porque DESAPARECERÁN. \n2. El juego te pedirá las fichas con un color o una forma específica, SELECCIONA LAS FICHAS QUE COINCIDAN.\n\n¡Un solo clic en falso y perderas un preciado corazon!");
         jScrollPane2.setViewportView(jTextPane3);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 350, 210));
