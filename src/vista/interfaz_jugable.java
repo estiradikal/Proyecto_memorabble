@@ -217,14 +217,13 @@ public class interfaz_jugable extends javax.swing.JFrame {
         ActionListener oyenteDeFichas = (ActionEvent e) -> { 
             JButton source = (JButton) e.getSource();             
            
-            if(source.getText() == lbl_imagen_criterio.getText()){
-                String criterio=lbl_imagen_criterio.getText();
+            if(source.getText().equals(lbl_imagen_criterio.getText())){                
                 //llenarFicha(source, "nope", criterio);                
                 source.setText("EPIC!");
                 source.setBackground(new java.awt.Color(0, 255, 0));
                 addAcierto();
             }
-            else if(source.getText() == "EPIC!"){}
+            else if("EPIC!".equals(source.getText())){}
             else{
                 addFallo();
             }   
@@ -260,9 +259,6 @@ public class interfaz_jugable extends javax.swing.JFrame {
 
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
-
-            
-            criterio = 1;
             
             if(misFichas.get(numRandom).getText() == "EMPTY"){
                 if(criterio == 1)
@@ -276,11 +272,10 @@ public class interfaz_jugable extends javax.swing.JFrame {
     public void llenarFicha(JButton fichaActual, String fichaActualImg, String criterioActual){       
 
         if(criterio == 1){
-            color.asignarColor(fichaActual, fichaActualImg, criterioActual);            
-            
+            color.asignarColor(fichaActual, fichaActualImg, criterioActual);  
         }
         else if(criterio == 2){
-            forma.asignarForma(fichaActual, fichaActualImg, criterioActual); // TAREA: IMPLEMENTAR LO MISMO DE COLOR AQUI PARA IMAGESOURCE
+            forma.asignarForma(fichaActual, fichaActualImg, criterioActual);
         }
         else{
             System.out.println("Este criterio no existe :( ");
