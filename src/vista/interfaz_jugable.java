@@ -79,6 +79,14 @@ public class interfaz_jugable extends javax.swing.JFrame {
         asignarFichas();
         syncBotonesStrings();
         mostrarCriterio(8);   
+        
+        // DESARROLLADOR //
+        /*
+        System.out.println("El criterio (" + criterio + "): " + lbl_imagen_criterio.getText());
+        for(JButton fichaActual: misFichas){
+            System.out.println(fichaActual.getText());
+        }
+        */
     }
 
     /**
@@ -256,7 +264,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); // Selecciona una ficha al azar,...
             llenarFicha(misFichas.get(numRandom), misFichasImg.get(numRandom), lbl_imagen_criterio.getText());
         }
-
+        
         for(int fichaActual = 0; fichaActual < dificultad*3; fichaActual ++){     
             numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1));
             
@@ -303,6 +311,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_imagen_criterio.setOpaque(true);
  
         criterio = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); // Selecciona un criterio al azar: Color = 1, Forma = 2,...        
+        
+        // DESARROLLADOR //
+        /*
+            criterio = 1;
+        */
         
         if(criterio == 1){
             color.generarCriterioColor(lbl_imagen_criterio);                   
