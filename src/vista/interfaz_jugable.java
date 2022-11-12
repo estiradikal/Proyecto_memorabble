@@ -6,6 +6,8 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.time.LocalTime;
@@ -27,7 +29,7 @@ import java.util.*;
     Versión: 0.3
     Licencia: GNU-GPL
 */
-public class interfaz_jugable extends javax.swing.JFrame {
+public class interfaz_jugable extends javax.swing.JFrame implements KeyListener {
     private LocalTime tiempoFinal;
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     private int vidas, aciertos, fallos, rondaActual, puntuacion, dificultad;
@@ -505,4 +507,24 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_vida2;
     private javax.swing.JLabel lbl_vida3;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        switch (e.getKeyCode()){
+            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_UP:
+            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_RIGHT: 
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
