@@ -3,7 +3,7 @@ package modelo;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.ImageIcon;
-import java.awt.Image;
+import java.awt.Image; // Necesaria para establecer correctamente la imagen del label en el criterio
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -16,14 +16,15 @@ import java.awt.Image;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-07-2022
-    Fecha última modificación: 11-07-2022
-    Versión: 1.0
+    Fecha última modificación: 11-11-2022
+    Versión: 1.5
     Licencia: GNU-GPL
 */
 
 public class formas{
     
     java.util.List<String> misFormas = new ArrayList<>();
+    public String imageSource = "";
     
     public formas(){
         misFormas.add("CIRCULO");
@@ -70,7 +71,7 @@ public class formas{
         lbl_criterio.setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
-    public void asignarForma(JButton fichaActual, String criterioActual){        
+    public void asignarForma(JButton fichaActual, String fichaActualImg, String criterioActual){        
         int numeroRandom;
         numeroRandom = (int) 1 + (int) (Math.random() * ((4 - 1) + 1)); 
         
@@ -81,17 +82,17 @@ public class formas{
             fichaActual.setText("CIRCULO");
             
             switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-amarillo.png"));
+                case 1:    
+                    imageSource = "/imagenes/circulo-amarillo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-azul.png"));
+                    imageSource = "/imagenes/circulo-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-rojo.png"));
+                    imageSource = "/imagenes/circulo-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-verde.png"));
+                    imageSource = "/imagenes/circulo-verde.png";
                     break;
                 default:
                     break;
@@ -102,17 +103,17 @@ public class formas{
                 fichaActual.setText("CORAZON");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
+                case 1:   
+                    imageSource = "/imagenes/corazon-amarillo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
+                    imageSource = "/imagenes/corazon-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
+                    imageSource = "/imagenes/corazon-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
+                    imageSource = "/imagenes/corazon-verde.png";
                     break;
                 default:
                     break;
@@ -123,17 +124,17 @@ public class formas{
                 fichaActual.setText("PICA");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-amarillo.png"));
+                case 1: 
+                    imageSource = "/imagenes/pica-amarillo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-azul.png"));
+                    imageSource = "/imagenes/pica-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-rojo.png"));
+                    imageSource = "/imagenes/pica-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-verde.png"));
+                    imageSource = "/imagenes/pica-verde.png";
                     break;
                 default:
                     break;
@@ -144,17 +145,17 @@ public class formas{
                 fichaActual.setText("ROMBO");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-amarillo.png"));
+                case 1:
+                    imageSource = "/imagenes/rombo-amarillo.png";                    
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-azul.png"));
+                    imageSource = "/imagenes/rombo-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-rojo.png"));
+                    imageSource = "/imagenes/rombo-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-verde.png"));
+                    imageSource = "/imagenes/rombo-verde.png";
                     break;
                 default:
                     break;
@@ -165,17 +166,17 @@ public class formas{
                 fichaActual.setText("TREBOL");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-amarillo.png"));
+                case 1:   
+                    imageSource = "/imagenes/trebol-amarillo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-azul.png"));
+                    imageSource = "/imagenes/trebol-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-rojo.png"));
+                    imageSource = "/imagenes/trebol-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-verde.png"));
+                    imageSource = "/imagenes/trebol-verde.png";
                     break;
                 default:
                     break;
@@ -183,6 +184,8 @@ public class formas{
             break;
         }
         
+        fichaActualImg = imageSource;   
+        miImagen = new javax.swing.ImageIcon(getClass().getResource(imageSource));
         fichaActual.setIcon(new ImageIcon(miImagen.getImage()));
     }
 }

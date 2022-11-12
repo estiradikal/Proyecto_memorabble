@@ -15,13 +15,15 @@ import javax.swing.ImageIcon;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-07-2022
-    Fecha última modificación: 11-07-2022
-    Versión: 1.0
+    Fecha última modificación: 11-11-2022
+    Versión: 1.5
     Licencia: GNU-GPL
 */
 
 public class colores{
+    
     java.util.List<String> misColores = new ArrayList<>();
+    public String imageSource = "";
     
     public colores (){
         misColores.add("AMARILLO");
@@ -60,112 +62,114 @@ public class colores{
         } 
     }
     
-    public void asignarColor(JButton fichaActual, String criterioActual){ 
+    public void asignarColor(JButton fichaActual, String fichaActualImg, String criterioActual){ 
         int numeroRandom;
         numeroRandom = (int) 1 + (int) (Math.random() * ((5 - 1) + 1)); 
         
-        ImageIcon miImagen = new ImageIcon();          
+        ImageIcon miImagen = new ImageIcon();   
+        
         
         switch (criterioActual) {
             case "AMARILLO":
             fichaActual.setText("AMARILLO");
             
             switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-amarillo.png"));
+                case 1:     
+                    imageSource = "/imagenes/circulo-amarillo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-amarillo.png"));
+                    imageSource = "/imagenes/corazon-amarillo.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-amarillo.png"));
+                    imageSource = "/imagenes/pica-amarillo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-amarillo.png"));
+                    imageSource = "/imagenes/rombo-amarillo.png";
                     break;
                 case 5:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-amarillo.png"));
+                    imageSource = "/imagenes/trebol-amarillo.png";
                     break;
                 default:
                     break;
             }
-            
             break;
 
             case "AZUL":
                 fichaActual.setText("AZUL");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-azul.png"));
+                case 1: 
+                    imageSource = "/imagenes/circulo-azul.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-azul.png"));
+                    imageSource = "/imagenes/corazon-azul.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-azul.png"));
+                    imageSource = "/imagenes/pica-azul.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-azul.png"));
+                    imageSource = "/imagenes/rombo-azul.png";
                     break;
                 case 5:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-azul.png"));
+                    imageSource = "/imagenes/trebol-azul.png";
                     break;
                 default:
                     break;
-                }                
+                }
             break;
             
             case "ROJO":
                 fichaActual.setText("ROJO");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-rojo.png"));
+                case 1:           
+                    imageSource = "/imagenes/circulo-rojo.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"));
+                    imageSource = "/imagenes/corazon-rojo.png";
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-rojo.png"));
+                    imageSource = "/imagenes/pica-rojo.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-rojo.png"));
+                    imageSource = "/imagenes/rombo-rojo.png";
                     break;
                 case 5:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-rojo.png"));
+                    imageSource = "/imagenes/trebol-rojo.png";                   
                     break;
                 default:
                     break;
-                }    
+                }
             break;
             
             case "VERDE":
                 fichaActual.setText("VERDE");
                 
                 switch (numeroRandom) {
-                case 1:                    
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/circulo-verde.png"));
+                case 1:              
+                    imageSource = "/imagenes/circulo-verde.png";
                     break;
                 case 2:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-verde.png"));
+                    imageSource = "/imagenes/corazon-verde.png";   
                     break;
                 case 3:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-verde.png"));
+                    imageSource = "/imagenes/pica-verde.png";
                     break;
                 case 4:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-verde.png"));
+                    imageSource = "/imagenes/rombo-verde.png";
                     break;
                 case 5:
-                    miImagen = new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-verde.png"));
+                    imageSource = "/imagenes/trebol-verde.png";
                     break;
                 default:
                     break;
                 }
-                break;
+            break;
  
         }
         
-        fichaActual.setIcon(new ImageIcon(miImagen.getImage()));
+        fichaActualImg = imageSource;   
+        miImagen = new javax.swing.ImageIcon(getClass().getResource(imageSource));
+        fichaActual.setIcon(new ImageIcon(miImagen.getImage()));    
     }
 }
