@@ -1,5 +1,6 @@
 package modelo;
 
+import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.ImageIcon;
@@ -16,7 +17,7 @@ import javax.swing.ImageIcon;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-07-2022
     Fecha última modificación: 11-11-2022
-    Versión: 1.5
+    Versión: 1.6
     Licencia: GNU-GPL
 */
 
@@ -39,27 +40,31 @@ public class colores{
     }
     
     public void generarCriterioColor(JLabel lbl_criterio){
-        modelo.colores color = new modelo.colores();
+        ImageIcon miImagen = new ImageIcon();
+          
         
-        lbl_criterio.setText(color.generarColor());
+        lbl_criterio.setText(generarColor());
         
         switch (lbl_criterio.getText()) {
             case "AMARILLO":
-                lbl_criterio.setBackground(new java.awt.Color(255, 255, 0));                
+                imageSource = "/imagenes/amarillo.png";             
                 break;
             case "AZUL":
-                lbl_criterio.setBackground(new java.awt.Color(0, 0, 255));
+                imageSource = "/imagenes/azul.png";
                 break;
             case "ROJO":
-                lbl_criterio.setBackground(new java.awt.Color(255, 0, 0));
+                imageSource = "/imagenes/rojo.png";
                 break;
             case "VERDE":
-                lbl_criterio.setBackground(new java.awt.Color(0, 255, 0));
+                imageSource = "/imagenes/verde.png";
                 break;
             default:
                 System.out.println("Se recibió " + lbl_criterio.getText() + " como color");
                 break;
         } 
+        
+        miImagen = new javax.swing.ImageIcon(getClass().getResource(imageSource));
+        lbl_criterio.setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
     public void asignarColor(JButton fichaActual, String fichaActualImg, String criterioActual){ 
