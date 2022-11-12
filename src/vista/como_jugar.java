@@ -163,8 +163,8 @@ public class como_jugar extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 130, 10));
 
         jTextPane3.setEditable(false);
-        jTextPane3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        jTextPane3.setText("1. Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán. \n2. El juego te mostrará una forma o un color. \n3.  Selecciona las figuras que coincidan.\n\n ¡OJO! Es posible  que haya que pulsar más de una ficha... \n\nRecuerda:\n✔  Es importante que memorices formas, colores y posición de cada ficha.");
+        jTextPane3.setFont(new java.awt.Font("Calibri", 1, 12)); // NOI18N
+        jTextPane3.setText("\n1. Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán. \n2. El juego te mostrará una forma o un color. \n3.  Selecciona las figuras que coincidan.\n\n ¡OJO! Es posible  que haya que pulsar más de una ficha... \n\nRecuerda:\n✔  Es importante que memorices las formas, los colores y la posición de cada ficha.\n¡Un clic en falso y perderas un preciado corazon!");
         jScrollPane2.setViewportView(jTextPane3);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 350, 210));

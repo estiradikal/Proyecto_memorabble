@@ -326,9 +326,9 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Calibri" size="14" style="0"/>
+                  <Font name="Calibri" size="12" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="1. Saldr&#xe1;n unas figuras con distintos colores y despu&#xe9;s de unos segundos desaparecer&#xe1;n. &#xa;2. El juego te mostrar&#xe1; una forma o un color. &#xa;3.  Selecciona las figuras que coincidan.&#xa;&#xa; &#xa1;OJO! Es posible  que haya que pulsar m&#xe1;s de una ficha... &#xa;&#xa;Recuerda:&#xa;&#x2714;  Es importante que memorices formas, colores y posici&#xf3;n de cada ficha."/>
+                <Property name="text" type="java.lang.String" value="&#xa;1. Saldr&#xe1;n unas figuras con distintos colores y despu&#xe9;s de unos segundos desaparecer&#xe1;n. &#xa;2. El juego te mostrar&#xe1; una forma o un color. &#xa;3.  Selecciona las figuras que coincidan.&#xa;&#xa; &#xa1;OJO! Es posible  que haya que pulsar m&#xe1;s de una ficha... &#xa;&#xa;Recuerda:&#xa;&#x2714;  Es importante que memorices las formas, los colores y la posici&#xf3;n de cada ficha.&#xa;&#xa1;Un clic en falso y perderas un preciado corazon!"/>
               </Properties>
             </Component>
           </SubComponents>
