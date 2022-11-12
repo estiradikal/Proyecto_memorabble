@@ -54,8 +54,8 @@ public class como_sirve extends javax.swing.JFrame {
         lbl_separador_inferior = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        lbl_imagen_lateral1 = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -70,35 +70,31 @@ public class como_sirve extends javax.swing.JFrame {
 
         lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
-        lbl_titulo.setText("Memorabble");
+        lbl_titulo.setText("¿Para que sirve?");
         jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         lbl_separador.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_separador.setOpaque(true);
-        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 440, 20));
+        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 350, 20));
 
         lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
         lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
         lbl_imagen_lateral.setOpaque(true);
         lbl_imagen_lateral.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 440, 20));
+        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 350, 20));
 
         lbl_separador_inferior.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador_inferior.setOpaque(true);
         jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 600, 30));
 
         jTextPane2.setEditable(false);
-        jTextPane2.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
-        jTextPane2.setText("Un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para recordar dónde guardamos nuestras cosas.\n");
+        jTextPane2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jTextPane2.setText("Memorabble es un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para recordar dónde guardamos nuestras cosas. ");
+        jTextPane2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jTextPane2);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 440, 100));
-
-        lbl_imagen_lateral1.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_imagen_lateral1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_imagen_lateral1.setOpaque(true);
-        jPanel1.add(lbl_imagen_lateral1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 60, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 350, 150));
 
         btn_volver.setBackground(new java.awt.Color(0, 102, 102));
         btn_volver.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -116,7 +112,12 @@ public class como_sirve extends javax.swing.JFrame {
                 btn_volverActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 130, 30));
+        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 310, 130, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/memorabble.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jLabel2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 190, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -190,11 +191,11 @@ public class como_sirve extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextPane jTextPane2;
     private javax.swing.JLabel lbl_imagen_lateral;
-    private javax.swing.JLabel lbl_imagen_lateral1;
     private javax.swing.JLabel lbl_separador;
     private javax.swing.JLabel lbl_separador_inferior;
     private javax.swing.JLabel lbl_titulo;

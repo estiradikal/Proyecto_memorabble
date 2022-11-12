@@ -54,8 +54,19 @@ public class como_jugar extends javax.swing.JFrame {
         lbl_separador_inferior = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane2 = new javax.swing.JTextPane();
-        lbl_imagen_lateral1 = new javax.swing.JLabel();
         btn_volver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        lbl_separador1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane3 = new javax.swing.JTextPane();
+        lbl_separador2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -70,35 +81,34 @@ public class como_jugar extends javax.swing.JFrame {
 
         lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
-        lbl_titulo.setText("Memorabble");
-        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        lbl_titulo.setText("Instrucciones");
+        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         lbl_separador.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_separador.setOpaque(true);
-        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 480, 20));
+        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 350, 10));
 
         lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
         lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
         lbl_imagen_lateral.setOpaque(true);
         lbl_imagen_lateral.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 480, 20));
+        jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 350, 10));
 
         lbl_separador_inferior.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador_inferior.setOpaque(true);
         jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 600, 30));
 
         jTextPane2.setEditable(false);
-        jTextPane2.setFont(new java.awt.Font("Calibri Light", 2, 14)); // NOI18N
-        jTextPane2.setText("INSTRUCCIONES: \n✔  Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán.\n✔  Después saldrá una pregunta.\n✔  La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada.\n✔  ¡OJO! Es posible  que haya que pulsar más de una ficha...\n✔  Es importante que memorices formas, colores y posición de cada ficha.");
+        jTextPane2.setBackground(new java.awt.Color(255, 255, 255));
+        jTextPane2.setBorder(null);
+        jTextPane2.setFont(new java.awt.Font("Arial", 1, 8)); // NOI18N
+        jTextPane2.setForeground(new java.awt.Color(0, 0, 0));
+        jTextPane2.setText("\n                    Y te pediremos\n  las que coinciden con una forma/color\n                           ¡Al azar!");
+        jTextPane2.setOpaque(false);
         jScrollPane1.setViewportView(jTextPane2);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 480, 160));
-
-        lbl_imagen_lateral1.setBackground(new java.awt.Color(0, 102, 102));
-        lbl_imagen_lateral1.setForeground(new java.awt.Color(255, 255, 255));
-        lbl_imagen_lateral1.setOpaque(true);
-        jPanel1.add(lbl_imagen_lateral1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 60, 370));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, 160, 50));
 
         btn_volver.setBackground(new java.awt.Color(0, 102, 102));
         btn_volver.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -116,7 +126,53 @@ public class como_jugar extends javax.swing.JFrame {
                 btn_volverActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 130, 30));
+        jPanel1.add(btn_volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 130, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/trebol-verde.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-rojo.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rojo.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 290, 60, 60));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pica-azul.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Arial", 1, 8)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("¡Memoriza todo lo que puedas!");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 30, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/rombo-amarillo.png"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon.png"))); // NOI18N
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 290, -1, -1));
+
+        lbl_separador1.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_separador1.setOpaque(true);
+        jPanel1.add(lbl_separador1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 290, 4, 60));
+
+        jLabel10.setFont(new java.awt.Font("Arial", 1, 8)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Porque desaparecerán...");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 190, 130, 10));
+
+        jTextPane3.setEditable(false);
+        jTextPane3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        jTextPane3.setText("1. Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán. \n2. El juego te mostrará una forma o un color. \n3.  Selecciona las figuras que coincidan.\n\n ¡OJO! Es posible  que haya que pulsar más de una ficha... \n\nRecuerda:\n✔  Es importante que memorices formas, colores y posición de cada ficha.");
+        jScrollPane2.setViewportView(jTextPane3);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 350, 210));
+
+        lbl_separador2.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_separador2.setOpaque(true);
+        jPanel1.add(lbl_separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 0, 2, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,12 +244,23 @@ public class como_jugar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_volver;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane3;
     private javax.swing.JLabel lbl_imagen_lateral;
-    private javax.swing.JLabel lbl_imagen_lateral1;
     private javax.swing.JLabel lbl_separador;
+    private javax.swing.JLabel lbl_separador1;
+    private javax.swing.JLabel lbl_separador2;
     private javax.swing.JLabel lbl_separador_inferior;
     private javax.swing.JLabel lbl_titulo;
     // End of variables declaration//GEN-END:variables
