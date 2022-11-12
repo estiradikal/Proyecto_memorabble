@@ -25,8 +25,8 @@ import modelo.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-11-2022
-    Versión: 0.6
+    Fecha última modificación: 11-12-2022
+    Versión: 0.7
     Licencia: GNU-GPL
 */
 
@@ -414,18 +414,23 @@ public class interfaz_jugable extends javax.swing.JFrame {
         }     
     }
     
-    public void siguienteRonda(){        
+    public void siguienteRonda(){   
+        // Juego no listo
         gameReady = 0;
         
+        // Elementos de la interfaz en su posicion inicial
         limpiarCriterio();
         limpiarFichas();
         limpiarFichasStr();
         
+        //Aumento de numero de ronda
         rondaActual += 1;
         
+        // Actualizacion de variables
         actualizarVidas();
         actualizarRonda();
         
+        // Inicio de lógica de juego
         iniciarCriterio();
         asignarFichas();
         syncBotonesStrings();
