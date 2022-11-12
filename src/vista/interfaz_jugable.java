@@ -26,7 +26,7 @@ import modelo.*;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
     Fecha última modificación: 11-11-2022
-    Versión: 0.5
+    Versión: 0.6
     Licencia: GNU-GPL
 */
 
