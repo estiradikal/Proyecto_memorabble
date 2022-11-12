@@ -69,14 +69,18 @@ public class interfaz_jugable extends javax.swing.JFrame {
         this.tiempoInicioMinutos = _tiempoInicioMinutos;
         this.tiempoInicioSegundos = _tiempoInicioSegundos; 
   
-        // Orden de ejecucion
+        // ORDEN DE PRIMERA EJECUCION //
+        // Actualizacion de variables
         actualizarVidas();        
         actualizarRonda();
         actualizarPuntuacion();
+        
+        // Iniciar lógica de juego
         iniciarCriterio();
         asignarFichas();
         syncBotonesStrings();
-        mostrarCriterio(8);          
+        mostrarCriterio(8);    
+        // --------------------------- //
     }
 
     /**
@@ -429,6 +433,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         // Actualizacion de variables
         actualizarVidas();
         actualizarRonda();
+        actualizarPuntuacion();
         
         // Inicio de lógica de juego
         iniciarCriterio();
