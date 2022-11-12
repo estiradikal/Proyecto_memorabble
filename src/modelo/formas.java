@@ -17,7 +17,7 @@ import java.awt.Image; // Necesaria para establecer correctamente la imagen del 
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-07-2022
     Fecha última modificación: 11-11-2022
-    Versión: 1.5
+    Versión: 1.6
     Licencia: GNU-GPL
 */
 
@@ -67,7 +67,6 @@ public class formas{
                 break;
         } 
         
-        //lbl_criterio.setIcon(new ImageIcon(miImagen.getImage()));
         lbl_criterio.setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
