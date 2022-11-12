@@ -80,7 +80,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         syncBotonesStrings();
         mostrarCriterio(8);   
         
-        // DESARROLLADOR //
+        // DESARROLLADOR // IMPRIME EL CRITERIO Y LAS FICHAS EN CONSOLA PARA COMPROBAR QUE VA BIEN
         /*
         System.out.println("El criterio (" + criterio + "): " + lbl_imagen_criterio.getText());
         for(JButton fichaActual: misFichas){
@@ -312,7 +312,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
  
         criterio = (int) 1 + (int) (Math.random() * ((2 - 1) + 1)); // Selecciona un criterio al azar: Color = 1, Forma = 2,...        
         
-        // DESARROLLADOR //
+        // DESARROLLADOR // CAMBIA EL CRITERIO A 1 PARA REVISAR LA GENERACION DE COLORES O A 2 PARA REVISAR LA GENERACION DE FORMAS
         /*
             criterio = 1;
         */
