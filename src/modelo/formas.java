@@ -100,7 +100,7 @@ public class formas{
             break;
 
             case "CORAZON":
-                fichaActual.setText("CORAZON");
+            fichaActual.setText("CORAZON");
                 
                 switch (numeroRandom) {
                 case 1:   
@@ -121,7 +121,7 @@ public class formas{
             break;
             
             case "PICA":
-                fichaActual.setText("PICA");
+            fichaActual.setText("PICA");
                 
                 switch (numeroRandom) {
                 case 1: 
@@ -142,7 +142,7 @@ public class formas{
             break;
             
             case "ROMBO":
-                fichaActual.setText("ROMBO");
+            fichaActual.setText("ROMBO");
                 
                 switch (numeroRandom) {
                 case 1:
@@ -163,7 +163,7 @@ public class formas{
             break;
             
             case "TREBOL":
-                fichaActual.setText("TREBOL");
+            fichaActual.setText("TREBOL");
                 
                 switch (numeroRandom) {
                 case 1:   
