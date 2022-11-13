@@ -8,11 +8,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import javax.swing.JOptionPane;
 import java.time.LocalTime;
 import java.util.*;
-
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -37,7 +43,7 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
     private int criterio;
     private java.util.List<JButton> misFichas = new ArrayList<>();
     private JLabel lbl_imagen_criterio = new JLabel();
-
+    
     /**
      * Creates new form interfaz_jugable
      */
@@ -418,6 +424,7 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
         else{
             lbl_criterio.setText("Quedan: " + restantes +  " por encontrar");
         }
+        
     }
     
     public void addFallo(){
@@ -427,12 +434,15 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
     }
     
     public void victoria(){
-        siguienteRonda();      
+        siguienteRonda();
+        ReproducirSonido("src/sonido/Ganar.wav");
+        
     }
     
     public void derrota(){
         if(vidas>=1){
             siguienteRonda();
+            ReproducirSonido("src/sonido/Perder.wav");
         }
         else{            
             lbl_vida1.setEnabled(false);        
@@ -455,6 +465,7 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
         tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
+        ReproducirSonido("src/sonido/GameOver.wav");
         
         String titulo = "";
         
@@ -480,6 +491,7 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
             titulo = "Pato supremo";
         }
         
+        dispose();
         JOptionPane.showMessageDialog(null, "Resumen de partida" 
                 + "\n"
                 + "\n" + "Titulo conseguido: " + titulo
@@ -526,5 +538,15 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener 
     @Override
     public void keyReleased(KeyEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    public void ReproducirSonido(String nombreSonido){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+         System.out.println("Error al reproducir el sonido.");
+        }
     }
 }

@@ -4,6 +4,7 @@ package controlador;
 
 import vista.interfaz_memorabble;
 
+
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
     LABORATORIO  
@@ -23,6 +24,5 @@ public class main {
     public static void main(String[] args) {        
         interfaz_memorabble im = new interfaz_memorabble();
         im.setVisible(true);  
-        
     }
 }
