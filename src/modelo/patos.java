@@ -39,7 +39,10 @@ public class patos{
         else if(aciertos>=15 && aciertos<20){
             titulo = "Pato aesthetic";
         }
-        else if(aciertos>=20 && aciertos<40){
+        else if(aciertos>=20 && aciertos<30){
+            titulo = "Pato fachero facherito";
+        }
+        else if(aciertos>=30 && aciertos<40){
             titulo = "Pato con traje";
         }
         else if(aciertos>=40 && aciertos<80){
