@@ -35,7 +35,7 @@ import modelo.*;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
     Fecha última modificación: 11-12-2022
-    Versión: 0.7
+    Versión: 0.8
     Licencia: GNU-GPL
 */
 
@@ -452,6 +452,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     * @see victoria(); Redirige a este metodo
     */
     public void addAcierto(){
+        ReproducirSonido("src/sonido/Acierto.wav");
         restantes = 0;
         aciertos += 1;
         puntuacion += 100;
@@ -618,7 +619,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
             clip.open(audioInputStream);
             clip.start();
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-         System.out.println("Error al reproducir el sonido.");
+         System.out.println("Error al reproducir el sonido de " + nombreSonido);
         }
     }
 }
