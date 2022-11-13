@@ -14,12 +14,14 @@ import java.io.IOException;
 import javax.swing.*;
 import java.time.LocalTime;
 import java.util.*;
+import javax.sound.sampled.*;
+/*
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-
+*/
 import modelo.*;
 
 
@@ -489,7 +491,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     */
     public void victoria(){
         siguienteRonda();
-        ReproducirSonido("src/sonido/Ganar.wav");
+        reproducirSonido("src/sonido/Ganar.wav");
         
     }
     
@@ -502,7 +504,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         if(vidas>=1){
             JOptionPane.showMessageDialog(null, "Fallaste pero aun puedes seguir jugando, vamos!");
             siguienteRonda();
-            ReproducirSonido("src/sonido/Perder.wav");
+            reproducirSonido("src/sonido/Perder.wav");
         }
         else{            
             lbl_vida1.setEnabled(false);        
@@ -552,7 +554,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
-        ReproducirSonido("src/sonido/GameOver.wav");
+        reproducirSonido("src/sonido/GameOver.wav");
         
         patos miPato = new patos();
         
@@ -610,8 +612,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_vida3;
     // End of variables declaration//GEN-END:variables
 
-   
-    public void ReproducirSonido(String nombreSonido){
+    /**
+     * Funciona para añadir y reproducir audio de extensión WAV.
+     * @param nombreSonido variable que almacena la ruta del respectivo audio.
+    */
+    public void reproducirSonido(String nombreSonido){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
             Clip clip = AudioSystem.getClip();
