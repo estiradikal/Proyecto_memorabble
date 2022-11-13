@@ -7,18 +7,9 @@ package vista;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.IOException;
 import javax.swing.*;
 import java.time.LocalTime;
 import java.util.*;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import modelo.*;
 
@@ -62,6 +53,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
     // Instancias de clases
     public colores color = new colores();
     public formas forma = new formas();
+    
+    // Reproductor de audios
+    reproductorSonido reproductor = new reproductorSonido();
 
     public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos) {
         // Inicio de componentes a primera vista
@@ -391,6 +385,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         timer.schedule(new TimerTask(){
             @Override
             public void run(){
+                reproductor.reproducirSonido("bubble.wav");
                 lbl_imagen_criterio.setVisible(true);
                 if(criterio == 1){
                     lbl_didactica.setText("Selecciona las que tengan este color: ");
@@ -452,7 +447,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     * @see victoria(); Redirige a este metodo
     */
     public void addAcierto(){
-        ReproducirSonido("src/sonido/Acierto.wav");
+        reproductor.reproducirSonido("Acierto.wav");
         restantes = 0;
         aciertos += 1;
         puntuacion += 100;
@@ -465,6 +460,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         } 
         
         if(restantes<=0){
+            reproductor.reproducirSonido("Ganar.wav");
             JOptionPane.showMessageDialog(null, "Ganaste esta ronda, vamos por la siguiente!");
             victoria();
         }
@@ -485,13 +481,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     /**
-    * Metodo práctico, solo redirige
+    * Metodo práctico, solo redirige y reproduce un audio de victoria de ronda
     * @see siguienteRonda();  Redirige a este metodo
     */
-    public void victoria(){
-        siguienteRonda();
-        ReproducirSonido("src/sonido/Ganar.wav");
-        
+    public void victoria(){        
+        siguienteRonda();       
     }
     
     /**
@@ -501,7 +495,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     */
     public void derrota(){
         if(vidas>=1){
-            ReproducirSonido("src/sonido/Perder.wav");
+            reproductor.reproducirSonido("Perder.wav");
             JOptionPane.showMessageDialog(null, "Fallaste pero aun puedes seguir jugando, vamos!");
             siguienteRonda();           
         }
@@ -553,7 +547,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
-        ReproducirSonido("src/sonido/GameOver.wav");
+        reproductor.reproducirSonido("GameOver.wav");
         
         patos miPato = new patos();
         
@@ -611,15 +605,4 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_vida3;
     // End of variables declaration//GEN-END:variables
 
-   
-    public void ReproducirSonido(String nombreSonido){
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-         System.out.println("Error al reproducir el sonido de " + nombreSonido);
-        }
-    }
 }
