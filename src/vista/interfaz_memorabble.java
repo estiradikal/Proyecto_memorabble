@@ -185,6 +185,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         + "\n" + "* La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada."
         + "\n" + "* ¡OJO! Es posible  que haya que pulsar más de una ficha..."
         + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");*/
+        reproductor.reproducirSonido("quack.wav");
         como_jugar cj=new como_jugar();
         cj.setVisible(true);
         dispose();
@@ -193,7 +194,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private void btn_para_que_sirveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_para_que_sirveActionPerformed
       /* JOptionPane.showMessageDialog(null,"Un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. \n"
                + "Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para \nrecordar dónde guardamos nuestras cosas.");*/
-
+      reproductor.reproducirSonido("quack.wav");
       como_sirve cs=new como_sirve();
       cs.setVisible(true);
       dispose();

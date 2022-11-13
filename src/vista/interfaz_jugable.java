@@ -501,9 +501,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
     */
     public void derrota(){
         if(vidas>=1){
-            JOptionPane.showMessageDialog(null, "Fallaste pero aun puedes seguir jugando, vamos!");
-            siguienteRonda();
             ReproducirSonido("src/sonido/Perder.wav");
+            JOptionPane.showMessageDialog(null, "Fallaste pero aun puedes seguir jugando, vamos!");
+            siguienteRonda();           
         }
         else{            
             lbl_vida1.setEnabled(false);        

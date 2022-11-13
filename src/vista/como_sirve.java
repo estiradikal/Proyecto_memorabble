@@ -4,9 +4,7 @@
  */
 package vista;
 
-import controlador.*;
-import java.awt.*;
-import javax.swing.JOptionPane;
+import modelo.*;
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -24,7 +22,7 @@ import javax.swing.JOptionPane;
     Licencia: GNU-GPL
 */
 public class como_sirve extends javax.swing.JFrame {
-
+    reproductorSonido reproductor = new reproductorSonido();
     /**
      * Creates new form interfaz_memorabble
      */
@@ -145,6 +143,7 @@ public class como_sirve extends javax.swing.JFrame {
             + "\n" + "* La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada."
             + "\n" + "* ¡OJO! Es posible  que haya que pulsar más de una ficha..."
             + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");*/
+        reproductor.reproducirSonido("quack.wav");
         interfaz_memorabble im=new interfaz_memorabble();
         im.setVisible(true);
         dispose();
