@@ -7,6 +7,7 @@ package vista;
 import controlador.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
+import modelo.*;
 
 /*
     Fundamentos de programación orientada a eventos 750014C-01  
@@ -24,11 +25,14 @@ import javax.swing.JOptionPane;
     Licencia: GNU-GPL
 */
 public class interfaz_memorabble extends javax.swing.JFrame {
+    
+    reproductorSonido reproductor = new reproductorSonido();
 
     /**
      * Creates new form interfaz_memorabble
      */
     public interfaz_memorabble() {
+        reproductor.reproducirSonido("memorabble.wav");
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
@@ -189,7 +193,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private void btn_para_que_sirveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_para_que_sirveActionPerformed
       /* JOptionPane.showMessageDialog(null,"Un juego que te permite entrenar tu capacidad de codificación y recuerdo de información visual y espacial. \n"
                + "Este tipo de habilidades es relevante en la práctica de algunos deportes, el reconocimiento de caras o para \nrecordar dónde guardamos nuestras cosas.");*/
-      
+
       como_sirve cs=new como_sirve();
       cs.setVisible(true);
       dispose();
@@ -199,12 +203,15 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private void btn_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugarActionPerformed
        //String nombre=JOptionPane.showInputDialog("Digite su nombre para continúar: ");
        //JOptionPane.showMessageDialog(null,"Buen juego "+nombre);
+       
         if((campo_nombre.getText().isEmpty()) || ("Ingrese su nombre...".equals(campo_nombre.getText()))){
+            reproductor.reproducirSonido("honk.wav");
             campo_nombre.setForeground(Color.GRAY);
             campo_nombre.setText("Ingrese su nombre...");
             JOptionPane.showMessageDialog(null, "Debes escribir tu nombre para continuar");
         }
         else{
+            reproductor.reproducirSonido("quack.wav");
             JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
             dispose();
             gameLauncher lanzador = new gameLauncher();
@@ -231,7 +238,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_nombreKeyPressed
 
     private void btn_como_jugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_como_jugarMouseClicked
-        como_jugar cj=new como_jugar();
+        como_jugar cj=new como_jugar();        
         cj.setVisible(true);
     }//GEN-LAST:event_btn_como_jugarMouseClicked
 
@@ -269,7 +276,6 @@ public class interfaz_memorabble extends javax.swing.JFrame {
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_como_jugar;
     private javax.swing.JButton btn_jugar;
