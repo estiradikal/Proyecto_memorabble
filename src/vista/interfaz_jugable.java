@@ -7,9 +7,18 @@ package vista;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import javax.swing.*;
 import java.time.LocalTime;
 import java.util.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 import modelo.*;
 
@@ -461,6 +470,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         else{
             lbl_didactica.setText("Quedan: " + restantes +  " por encontrar");
         }
+        
     }
     
     /**
@@ -478,7 +488,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
     * @see siguienteRonda();  Redirige a este metodo
     */
     public void victoria(){
-        siguienteRonda();      
+        siguienteRonda();
+        ReproducirSonido("src/sonido/Ganar.wav");
+        
     }
     
     /**
@@ -490,6 +502,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         if(vidas>=1){
             JOptionPane.showMessageDialog(null, "Fallaste pero aun puedes seguir jugando, vamos!");
             siguienteRonda();
+            ReproducirSonido("src/sonido/Perder.wav");
         }
         else{            
             lbl_vida1.setEnabled(false);        
@@ -539,9 +552,11 @@ public class interfaz_jugable extends javax.swing.JFrame {
         tiempoFinal = tiempoFinal.minusHours(tiempoInicioHoras);
         tiempoFinal = tiempoFinal.minusMinutes(tiempoInicioMinutos);
         tiempoFinal = tiempoFinal.minusSeconds(tiempoInicioSegundos); 
+        ReproducirSonido("src/sonido/GameOver.wav");
         
         patos miPato = new patos();
         
+        dispose();
         JOptionPane.showMessageDialog(null, "Resumen de partida" 
                 + "\n"
                 + "\n" + "Titulo conseguido: " + miPato.definirPato(aciertos)
@@ -594,4 +609,16 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_vida2;
     private javax.swing.JLabel lbl_vida3;
     // End of variables declaration//GEN-END:variables
+
+   
+    public void ReproducirSonido(String nombreSonido){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(nombreSonido).getAbsoluteFile());
+            Clip clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            clip.start();
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+         System.out.println("Error al reproducir el sonido.");
+        }
+    }
 }

@@ -32,9 +32,7 @@ public class interfaz_memorabble extends javax.swing.JFrame {
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
-        setResizable(false);
-
-        
+        setResizable(false); 
     }
 
     /**
