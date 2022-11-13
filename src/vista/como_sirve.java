@@ -18,7 +18,7 @@ import modelo.*;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
     Fecha última modificación: 11-03-2022
-    Versión: 0.2
+    Versión: 1.0
     Licencia: GNU-GPL
 */
 public class como_sirve extends javax.swing.JFrame {

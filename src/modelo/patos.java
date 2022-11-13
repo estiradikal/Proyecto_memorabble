@@ -13,7 +13,7 @@ import java.util.ArrayList;
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-11-2022
     Fecha última modificación: 11-11-2022
-    Versión: 1.0
+    Versión: 1.1
     Licencia: GNU-GPL
 */
 
