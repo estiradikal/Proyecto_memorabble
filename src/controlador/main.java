@@ -20,9 +20,9 @@ import modelo.*;
 */
 public class main {
     public static void main(String[] args) { 
-        reproductorSonido reproductor = new reproductorSonido();
-        reproductor.reproducirSonido("memorabble.wav");
+        reproductorSonido reproductor = new reproductorSonido();        
         interfaz_memorabble im = new interfaz_memorabble();
         im.setVisible(true);  
+        reproductor.reproducirSonido("memorabble.wav");
     }
 }
