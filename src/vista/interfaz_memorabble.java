@@ -24,7 +24,7 @@ import modelo.*;
     Versión: 1.0
     Licencia: GNU-GPL
 */
-public class interfaz_memorabble extends javax.swing.JFrame {
+public class interfaz_memorabble extends javax.swing.JFrame{
     
     reproductorSonido reproductor = new reproductorSonido();
 
@@ -203,22 +203,35 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     private void btn_jugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_jugarActionPerformed
        //String nombre=JOptionPane.showInputDialog("Digite su nombre para continúar: ");
        //JOptionPane.showMessageDialog(null,"Buen juego "+nombre);
-       
-        if((campo_nombre.getText().isEmpty()) || ("Ingrese su nombre...".equals(campo_nombre.getText()))){
-            reproductor.reproducirSonido("honk.wav");
-            campo_nombre.setForeground(Color.GRAY);
-            campo_nombre.setText("Ingrese su nombre...");
-            JOptionPane.showMessageDialog(null, "Debes escribir tu nombre para continuar");
-        }
-        else{
-            reproductor.reproducirSonido("quack.wav");
+       verificarCampoNombre(); 
+    }//GEN-LAST:event_btn_jugarActionPerformed
+  
+   
+    public void solicitarCampoNombre(){
+        reproductor.reproducirSonido("honk.wav");
+        campo_nombre.setForeground(Color.GRAY);
+        campo_nombre.setText("Ingrese su nombre...");
+        JOptionPane.showMessageDialog(null, "Debes escribir tu nombre para continuar");
+    }
+
+    
+    public void iniciarPartida(){
+        reproductor.reproducirSonido("quack.wav");
             JOptionPane.showMessageDialog(null, "Buen juego " + campo_nombre.getText());
             dispose();
             gameLauncher lanzador = new gameLauncher();
             lanzador.nuevoJuego();
+    }
+    
+    public void verificarCampoNombre(){
+    if((campo_nombre.getText().isEmpty()) || ("Ingrese su nombre...".equals(campo_nombre.getText()))){
+            solicitarCampoNombre();
+        }
+        else{
+            iniciarPartida();
         }  
-    }//GEN-LAST:event_btn_jugarActionPerformed
-
+    }
+    
     private void campo_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campo_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campo_nombreActionPerformed
@@ -231,7 +244,10 @@ public class interfaz_memorabble extends javax.swing.JFrame {
     }//GEN-LAST:event_campo_nombreMousePressed
 
     private void campo_nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_nombreKeyPressed
-        if("Ingrese su nombre...".equals(campo_nombre.getText())){
+        if (evt.getKeyCode() == 10) {
+            verificarCampoNombre();
+        }
+        else if("Ingrese su nombre...".equals(campo_nombre.getText())){
             campo_nombre.setForeground(Color.BLACK);
             campo_nombre.setText("");
         }
