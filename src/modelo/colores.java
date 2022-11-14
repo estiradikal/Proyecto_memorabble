@@ -77,8 +77,8 @@ public class colores{
     /**
      * Cambia el ImageIcon del JButton que reciba por uno de una ficha aleatoria
      * @param fichaActual El boton al que cambiará el nombre
-     * @param fichaActualImg El String donde copiara el nombre del color/forma
-     * @param criterioActual El criterio que considerará para asignar un color/forma
+     * @param fichaActualImg El String donde copiara el nombre del color
+     * @param criterioActual El criterio que considerará para asignar un color
      */
     public void asignarColor(JButton fichaActual, String fichaActualImg, String criterioActual){ 
         int numeroRandom;
