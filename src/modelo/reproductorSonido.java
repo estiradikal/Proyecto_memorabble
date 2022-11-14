@@ -16,15 +16,20 @@ import javax.sound.sampled.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-12-2022
-    Fecha última modificación: 11-12-2022 
+    Fecha última modificación: 11-14-2022 
     Versión: 1.0
     Licencia: GNU-GPL
 */
 public class reproductorSonido{
     
+    //Constructor
     public reproductorSonido(){
     }
     
+    /**
+     * Funciona para añadir y reproducir audio de extensión WAV.
+     * @param nombreSonido variable que almacena la ruta del respectivo audio.
+    */
     public void reproducirSonido(String nombreSonido){
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/sonido/"+nombreSonido).getAbsoluteFile());
