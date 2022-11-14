@@ -74,14 +74,17 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
         lbl_titulo.setText("Memorabble");
+        lbl_titulo.setFocusable(false);
         jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         lbl_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_bienvenido.setText("Bienvenid@,");
+        lbl_bienvenido.setFocusable(false);
         jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         lbl_digite_su_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_digite_su_nombre.setText("Digite su nombre para empezar a jugar");
+        lbl_digite_su_nombre.setFocusable(false);
         jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
         campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -129,6 +132,7 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         btn_como_jugar.setText("¿Como jugar?");
         btn_como_jugar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_como_jugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_como_jugar.setFocusable(false);
         btn_como_jugar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_como_jugarMouseClicked(evt);
@@ -147,6 +151,7 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         btn_para_que_sirve.setText("¿Para qué sirve?");
         btn_para_que_sirve.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btn_para_que_sirve.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_para_que_sirve.setFocusable(false);
         btn_para_que_sirve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_para_que_sirveActionPerformed(evt);
@@ -156,10 +161,12 @@ public class interfaz_memorabble extends javax.swing.JFrame{
 
         lbl_imagen_lateral.setBackground(new java.awt.Color(0, 102, 102));
         lbl_imagen_lateral.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_imagen_lateral.setFocusable(false);
         lbl_imagen_lateral.setOpaque(true);
         jPanel1.add(lbl_imagen_lateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 0, 140, 370));
 
         lbl_separador_inferior.setBackground(new java.awt.Color(51, 51, 51));
+        lbl_separador_inferior.setFocusable(false);
         lbl_separador_inferior.setOpaque(true);
         jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 600, 30));
 
