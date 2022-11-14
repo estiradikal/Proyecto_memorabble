@@ -33,13 +33,20 @@ public class formas{
         misFormas.add("ROMBO");
         misFormas.add("TREBOL");
     }   
- 
+    
+    /**
+     * Selecciona una forma random entre las que tiene en el vector misFormas
+     */
     public String generarForma(){
         int numeroRandom;
         numeroRandom = (int) 0 + (int) (Math.random() * ((misFormas.size() - 1) + 1));        
         return misFormas.get(numeroRandom);
     }
     
+    /**
+     * Cambia el ImageIcon del JLabel que reciba por uno de criterio de forma
+     * @param lbl_criterio El JLabel al que asignará/cambiará un ImageIcon
+     */
     public void generarCriterioForma(JLabel lbl_criterio){
         modelo.colores color = new modelo.colores();
         ImageIcon miImagen = new ImageIcon(); 
@@ -70,6 +77,11 @@ public class formas{
         lbl_criterio.setIcon(new ImageIcon(miImagen.getImage().getScaledInstance(170, 170, Image.SCALE_SMOOTH)));
     }
     
+    /**
+     * Cambia el ImageIcon del JButton que reciba por uno de una ficha aleatoria
+     * @param fichaActual El boton al que cambiará el nombre
+     * @param fichaActualImg El String donde copiara el nombre de la forma
+    */
     public void asignarForma(JButton fichaActual, String fichaActualImg, String criterioActual){        
         int numeroRandom;
         numeroRandom = (int) 1 + (int) (Math.random() * ((4 - 1) + 1)); 
