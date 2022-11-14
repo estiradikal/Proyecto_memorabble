@@ -3,7 +3,13 @@
 
 # ignorar la carpeta de configuracion privada
 /nbproject/private
+
+# ignorar la carpeta de compilación
 /dist/
+
+#ignorar archivo desconocido
+/desktop.ini
+
 
 # ignorar el mainProvisional.java (donde puede experimentar cualquiera en su rama)
 /src/controlador/mainProvisional.java
