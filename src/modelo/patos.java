@@ -18,12 +18,16 @@ import java.util.ArrayList;
 */
 
 public class patos{
+    
     java.util.List<String> misColores = new ArrayList<>();
     
     public patos (){
     }   
 
-    
+    /**
+     * Genera un titulo divertido de un pato basado en un numero
+     * @param aciertos El numero que se toma como referencia; Memorabble usa los aciertos
+     */
     public String definirPato(int aciertos){        
         String titulo = "";
         
