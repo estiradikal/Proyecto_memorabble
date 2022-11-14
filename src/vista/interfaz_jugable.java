@@ -12,6 +12,9 @@ import java.time.LocalTime;
 import java.util.*;
 
 import modelo.*;
+import controlador.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 
 /*
@@ -25,47 +28,30 @@ import modelo.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-12-2022
-    Versión: 0.9
+    Fecha última modificación: 11-13-2022
+    Versión: 0.10
     Licencia: GNU-GPL
 */
 
-public class interfaz_jugable extends javax.swing.JFrame {
-    // Variables principales de pleno juego
-    private LocalTime tiempoFinal;
-    private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos; // Variables de tiempo
-    private int vidas = 3, aciertos = 0, fallos = 0, rondaActual = 1, puntuacion = 0, dificultad = 2; // Valores iniciales de la partida 0
-    private int gameReady = 0; // 0 = Inhabilita la funcionalidad de las fichas mientras no hay criterio    
-    private int criterio; 
-    private int restantes;
+public class interfaz_jugable extends javax.swing.JFrame implements KeyListener{
     
-    // Imagen vacia multiuso
-    private ImageIcon imagenVacia = new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png"));
     
-    // Arreglos
-    private java.util.List<JButton> misFichas = new ArrayList<>(); // Botones de fichas
-    private java.util.List<String> misFichasImg = new ArrayList(); // Copia de la ruta de imagen del boton
-    private java.util.List<String> misFichasStr = new ArrayList<>(); // Copia del texto del boton
+    //               CONSTRUCTOR                     //
     
-    // Contenedor del criterio
-    private JLabel lbl_imagen_criterio = new JLabel();
-    
-    // Instancias de clases
-    public colores color = new colores();
-    public formas forma = new formas();
-    
-    // Reproductor de audios
-    reproductorSonido reproductor = new reproductorSonido();
-
     public interfaz_jugable(int _tiempoInicioHoras, int _tiempoInicioMinutos, int _tiempoInicioSegundos) {
         // Inicio de componentes a primera vista
-        initComponents();
-        iniciarFichas();     
+        initComponents();        
+        iniciarFichas();  
         
         // Ajustes de ventana
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
+        
+        // Implementacion del KeyListener
+        setFocusable(true);
+        addKeyListener(this);
+        
      
         // Guardado del tiempo
         this.tiempoInicioHoras = _tiempoInicioHoras;
@@ -82,7 +68,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         iniciarCriterio();
         asignarFichas();
         syncBotonesStrings();
-        mostrarCriterio(8);    
+        mostrarCriterio(8);
         // --------------------------- //
     }
     
@@ -106,6 +92,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_vida3 = new javax.swing.JLabel();
         lbl_banner_superior = new javax.swing.JLabel();
         btn_rendirse = new javax.swing.JToggleButton();
+        lbl_selector = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,17 +102,20 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_rondaActual.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbl_rondaActual.setForeground(new java.awt.Color(255, 255, 255));
         lbl_rondaActual.setText("RONDA  ");
+        lbl_rondaActual.setFocusable(false);
         jPanel1.add(lbl_rondaActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 4, -1, 30));
 
         lbl_puntuacion.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbl_puntuacion.setForeground(new java.awt.Color(255, 255, 255));
         lbl_puntuacion.setText("PUNTUACIÓN");
+        lbl_puntuacion.setFocusable(false);
         jPanel1.add(lbl_puntuacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 4, -1, 30));
 
         lbl_puntuacionActual.setBackground(new java.awt.Color(255, 255, 255));
         lbl_puntuacionActual.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         lbl_puntuacionActual.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_puntuacionActual.setText("0");
+        lbl_puntuacionActual.setFocusable(false);
         lbl_puntuacionActual.setOpaque(true);
         jPanel1.add(lbl_puntuacionActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(395, 4, 90, 30));
 
@@ -133,25 +123,30 @@ public class interfaz_jugable extends javax.swing.JFrame {
         lbl_didactica.setFont(new java.awt.Font("Segoe UI", 1, 10)); // NOI18N
         lbl_didactica.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbl_didactica.setText("¡Memoriza todas las que puedas!");
+        lbl_didactica.setFocusable(false);
         jPanel1.add(lbl_didactica, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 210, -1));
 
         lbl_vida1.setBackground(new java.awt.Color(0, 102, 102));
         lbl_vida1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
         lbl_vida1.setEnabled(false);
+        lbl_vida1.setFocusable(false);
         jPanel1.add(lbl_vida1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 4, 30, 30));
 
         lbl_vida2.setBackground(new java.awt.Color(0, 102, 102));
         lbl_vida2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
         lbl_vida2.setEnabled(false);
+        lbl_vida2.setFocusable(false);
         jPanel1.add(lbl_vida2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 4, 30, 30));
 
         lbl_vida3.setBackground(new java.awt.Color(0, 102, 102));
         lbl_vida3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/corazon-vidas.png"))); // NOI18N
         lbl_vida3.setEnabled(false);
+        lbl_vida3.setFocusable(false);
         jPanel1.add(lbl_vida3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 4, 30, 30));
 
         lbl_banner_superior.setBackground(new java.awt.Color(0, 102, 102));
         lbl_banner_superior.setForeground(new java.awt.Color(255, 255, 255));
+        lbl_banner_superior.setFocusable(false);
         lbl_banner_superior.setOpaque(true);
         jPanel1.add(lbl_banner_superior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 750, 40));
 
@@ -160,12 +155,20 @@ public class interfaz_jugable extends javax.swing.JFrame {
         btn_rendirse.setForeground(new java.awt.Color(255, 255, 255));
         btn_rendirse.setText("Rendirse");
         btn_rendirse.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_rendirse.setFocusable(false);
         btn_rendirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_rendirseActionPerformed(evt);
             }
         });
         jPanel1.add(btn_rendirse, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 80, -1));
+
+        lbl_selector.setBackground(new java.awt.Color(0, 0, 0));
+        lbl_selector.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbl_selector.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
+        lbl_selector.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbl_selector.setRequestFocusEnabled(false);
+        jPanel1.add(lbl_selector, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 57, 76, 86));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,7 +183,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     /**
     * Comprueba la cantidad de vidas restantes y habilita o deshabilita los lbl_vida#
     */
@@ -226,7 +229,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
     * @see forma.generarCriterioColor(); si el numero es 2, pedira al metodo ser llenado con un criterio aleatorio (tipo forma)
     */
     public void iniciarCriterio(){
-        lbl_imagen_criterio.setVisible(false);
+        lbl_imagen_criterio.setRequestFocusEnabled(false);
+        lbl_imagen_criterio.setVisible(false);        
         jPanel1.add(lbl_imagen_criterio, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 110, 170, 170));  
         lbl_imagen_criterio.setFont(new java.awt.Font("Segoe UI", 0, 0)); // NOI18N
         lbl_imagen_criterio.setOpaque(true);
@@ -247,6 +251,23 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     /**
+     * Oyente de todas las fichas del tablero, redirige a una funcion
+     * @see funcionFichas(); 
+     */
+    ActionListener oyenteDeFichas = (ActionEvent e) -> { 
+            JButton source = (JButton) e.getSource();             
+            funcionFichas(source);                    
+    };
+    
+    /**
+     * Actualiza la posicion del vector y lo repinta
+     */
+    public void actualizarPosicionSelector(){
+        lbl_selector.setLocation(selectorX, selectorY);
+        repaint();
+    }
+    
+    /**
     * Crea los JButton para las fichas (posicion, color, fuente...), las pone en el tablero y les asigna a cada una el mismo ActionListener
     */
     public void iniciarFichas(){
@@ -258,8 +279,8 @@ public class interfaz_jugable extends javax.swing.JFrame {
         ancho = 70;
         alto = 80;
         columnas = 6; // Horizontales
-        filas = 3; // Verticales   
-        
+        filas = 3; // Verticales
+
         cantidadFichas = columnas * filas;        
         
         for(int fichaActual = 0; fichaActual<cantidadFichas; fichaActual++){
@@ -274,6 +295,9 @@ public class interfaz_jugable extends javax.swing.JFrame {
             misFichas.get(fichaActual).setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));
             misFichas.get(fichaActual).addActionListener(oyenteDeFichas);
             
+            // Desactivando que la ficha tome el enfoque siempre
+            misFichas.get(fichaActual).setRequestFocusEnabled(false);
+            
             jPanel1.add(misFichas.get(fichaActual), new org.netbeans.lib.awtextra.AbsoluteConstraints(posX, posY, ancho, alto));
             posX += ancho+10;
             
@@ -281,35 +305,14 @@ public class interfaz_jugable extends javax.swing.JFrame {
                 posY += alto+5;
                 posX = 20;
             }    
-        }     
+        }  
     }
-    
-    
-    //             LOGICA DE FICHAS               //
-    
-    /**
-    * Debidamente condicionado, decide la funcion de las teclas en distintas condiciones y momentos
-    */
-    ActionListener oyenteDeFichas = (ActionEvent e) -> { 
-            JButton source = (JButton) e.getSource();             
-           
-            if(gameReady == 0){} // El juego aun no ha mostrado el criterio
-            else if("EPIC!".equals(source.getText())){} // Se ha dado clic en una que ya se comnfirmó
-            else if(source.getText().equals(lbl_imagen_criterio.getText())){ // La seleccion corresponde al criterio              
-                //llenarFicha(source, "nope", criterio);                
-                source.setText("EPIC!");
-                source.setBackground(new java.awt.Color(0, 255, 0));
-                addAcierto();
-            }
-            else{ // La seleccion no corresponde al criterio
-                addFallo();
-            }   
-    };
-   
+  
     /**
     * Asigna figuras y colores en los botones de forma aleatoria.
     * Considera el criterio y crea algunas extra para crearla dificultad del juego.
     * @see llenarFicha(); - Hace uso de este metodo para asignar imagenes a las fichas. 
+    * @see 
     */
     public void asignarFichas(){
         int numRandom = (int) 0 + (int) (Math.random() * ((misFichas.size()-1 - 1) + 1)); 
@@ -338,9 +341,12 @@ public class interfaz_jugable extends javax.swing.JFrame {
         // DESARROLLADOR // IMPRIME EL CRITERIO Y LAS FICHAS EN CONSOLA PARA COMPROBAR QUE VA BIEN
         /*
         System.out.println("El criterio (" + criterio + "): " + lbl_imagen_criterio.getText());
+        int developerVariable1 = 0;
         for(JButton fichaActual: misFichas){
-            System.out.println(fichaActual.getText());
+            System.out.println(developerVariable1 + ". "+ fichaActual.getText());
+            developerVariable1 += 1;
         }
+        developerVariable1 = 0;
         */
     }
     
@@ -385,7 +391,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
         timer.schedule(new TimerTask(){
             @Override
             public void run(){
-                reproductor.reproducirSonido("bubble.wav");
+                reproductor.reproducirSonido("bubble.wav");                
                 lbl_imagen_criterio.setVisible(true);
                 if(criterio == 1){
                     lbl_didactica.setText("Selecciona las que tengan este color: ");
@@ -397,6 +403,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
                     lbl_didactica.setText("Error: Criterio fuera de rango");
                 }
                 
+                lbl_selector.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 255)));
                 ocultarFichas();
                 gameReady = 1;
             }
@@ -404,8 +411,18 @@ public class interfaz_jugable extends javax.swing.JFrame {
     }
     
     
-    
     //   RESTAURACION DE ELEMENTOS A SUS ESTADOS INICIALES    //
+    
+    /**
+    * Restablece los valores de posicion inicial del selector (Color y posicion x e y)
+    * @see actualizarPosicionSelector(); Para repintar el selector con los valores de posicion
+    */
+    public void limpiarSelector(){
+        lbl_selector.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
+        selectorX = 17;
+        selectorY = 57;
+        actualizarPosicionSelector();
+    }
     
     /**
     * Restablece el texto, ImageIcon y background de las fichas a su estado incial
@@ -416,6 +433,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
             fichaActual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png")));
             fichaActual.setBackground(new java.awt.Color(150, 152, 154));
         }
+        fichaSeleccionada = 0;
     }
     
     /**
@@ -510,14 +528,15 @@ public class interfaz_jugable extends javax.swing.JFrame {
     
     /**
     * Se encarga de realizar las limpiezas necesarias para iniciar la siguiente ronda
-    * @see limpiarCriterio(); |  limpiarFichas();   | limpiarFichasStr();               Limpieza y restablecimiento de GUI
-    * @see actualizarVidas(); |  actualizarRonda(); | actualizarPuntuacion();           Actualizacion de variables e hitos
-    * @see iniciarCriterio(); |  asignarFichas();   | syncBotonesStrings();  |  mostrarCriterio(8); Inicializacion de lógica de juego 
+    * @see limpiarSelector(); | limpiarCriterio(); |  limpiarFichas();   | limpiarFichasStr();              Limpieza y restablecimiento de GUI
+    * @see actualizarVidas(); |  actualizarRonda(); | actualizarPuntuacion();                               Actualizacion de variables e hitos
+    * @see iniciarCriterio(); |  asignarFichas();   | syncBotonesStrings();  |  mostrarCriterio(8);         Inicializacion de lógica de juego 
     */
     public void siguienteRonda(){   
         // Juego no listo
         gameReady = 0;
         
+        limpiarSelector();
         limpiarCriterio();
         limpiarFichas();
         limpiarFichasStr();
@@ -569,6 +588,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
    
     
     //               LOGICA DE RENDICION                    // 
+    
     /**
     * Método práctico autogenerado, redirecciona a otro metodo
     * @see finalizarPartida(); Pide que se inicie el proceso de finalizar la partida
@@ -579,6 +599,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
 
     
     //       FUNCIONES EXPERIMENTALES EN DESARROLLO          //
+    
     /**
     * Almacena el texto de cada ficha para restaurar en un futuro
     */
@@ -588,9 +609,115 @@ public class interfaz_jugable extends javax.swing.JFrame {
             misFichasStr.set(i, fichaActual.getText());
             i++;
         }
-    } 
+    }
+    
+    /**
+    * Decide la funcion de las teclas en distintas condiciones y momentos.
+    * @param fichaPresionada La ficha que analizará.
+    * @see addAcierto(); Si el texto de la ficha coincide con el texto del criterio
+    * @see addFallo(); Si el texto de la ficha no coincide con el texto del criterio
+    */
+    public void funcionFichas(JButton fichaPresionada){
+        //      DESARROLLADOR       // Comprueba que ficha seleccionaste
+        /*
+        System.out.println("Texto obtenido: " + fichaPresionada.getText());
+        System.out.println("Texto a comprar: "+ lbl_imagen_criterio.getText());
+        */
+        if(gameReady == 0){} // El juego aun no ha mostrado el criterio
+        else if("EPIC!".equals(fichaPresionada.getText())){} // Se ha dado clic en una que ya se comnfirmó
+        else if(fichaPresionada.getText() == lbl_imagen_criterio.getText()){ // La seleccion corresponde al criterio              
+            //llenarFicha(source, "nope", criterio);                
+            fichaPresionada.setText("EPIC!");
+            fichaPresionada.setBackground(new java.awt.Color(0, 255, 0));
+            addAcierto();
+        }
+        else{ // La seleccion no corresponde al criterio
+            addFallo();
+        }
+    }
     
     
+    //                  METODOS DE KEYLISTENER              //
+    
+    @Override
+    public void keyTyped(KeyEvent e) {}
+    
+    /**
+     * Se encarga de cambiar la ficha que se está seleccionando y mover el label para que el usuario vea la ficha seleccionada
+     * @see funcionFichas();  Para iniciar la funcionalidad de las fichas
+     * @see actualizarPosicionSelector(); Para actualizar la posicion del label en pantalla
+     */
+    @Override
+    public void keyPressed(KeyEvent e) {
+        if(gameReady == 1){
+            if(e.getExtendedKeyCode()== 10){
+                funcionFichas(misFichas.get(fichaSeleccionada));    
+            }
+            if(e.getExtendedKeyCode()== KeyEvent.VK_UP && fichaSeleccionada >= 6){
+                selectorY -= 85;
+                fichaSeleccionada -= 6;
+            }
+            if(e.getExtendedKeyCode()== KeyEvent.VK_DOWN && fichaSeleccionada <= 11){
+                selectorY += 85;
+                fichaSeleccionada += 6;
+            }
+            if(e.getExtendedKeyCode()== KeyEvent.VK_LEFT && fichaSeleccionada != 0 && fichaSeleccionada != 6 && fichaSeleccionada != 12){
+                selectorX -= 80;
+                fichaSeleccionada -= 1;
+            }
+            if(e.getExtendedKeyCode()== KeyEvent.VK_RIGHT && fichaSeleccionada != 5 && fichaSeleccionada != 11 && fichaSeleccionada != 17){
+                selectorX += 80;
+                fichaSeleccionada += 1;
+            } 
+        }
+        actualizarPosicionSelector();
+        //  DESARROLLADOR   //Muestra la ficha seleccionada y la posicion del label de selector
+        /*
+        System.out.println("Estas en la ficha N. " + fichaSeleccionada);
+        System.out.println("Selector x:" + selectorX + "y: " + selectorY);
+        */
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {}
+
+    
+    
+    //                  DECLARACION DE VARIABLES                   //
+    
+    // Variables principales de pleno juego
+    private LocalTime tiempoFinal;
+    private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos; // Variables de tiempo
+    private int vidas = 3, aciertos = 0, fallos = 0, rondaActual = 1, puntuacion = 0, dificultad = 2; // Valores iniciales de la partida 0
+    private int gameReady = 0; // 0 = Inhabilita la funcionalidad de las fichas mientras no hay criterio    
+    private int criterio; 
+    private int restantes;
+    
+    // Imagen vacia multiuso
+    private ImageIcon imagenVacia = new javax.swing.ImageIcon(getClass().getResource("/imagenes/empty.png"));
+    
+    // Codigo de ficha seleccionada
+    private int fichaSeleccionada = 0;
+    
+    // Arreglos
+    private java.util.List<JButton> misFichas = new ArrayList<>(); // Botones de fichas
+    private java.util.List<String> misFichasImg = new ArrayList(); // Copia de la ruta de imagen del boton
+    private java.util.List<String> misFichasStr = new ArrayList<>(); // Copia del texto del boton
+    
+    // Contenedor del criterio
+    private JLabel lbl_imagen_criterio = new JLabel();
+    
+    // Posiciones del selector
+    int selectorX = 17;
+    int selectorY = 57;
+    
+    
+    // Instancias de clases
+    public colores color = new colores();
+    public formas forma = new formas();
+    
+    // Reproductor de audios
+    reproductorSonido reproductor = new reproductorSonido();
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton btn_rendirse;
@@ -600,6 +727,7 @@ public class interfaz_jugable extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_puntuacion;
     private javax.swing.JLabel lbl_puntuacionActual;
     private javax.swing.JLabel lbl_rondaActual;
+    private javax.swing.JLabel lbl_selector;
     private javax.swing.JLabel lbl_vida1;
     private javax.swing.JLabel lbl_vida2;
     private javax.swing.JLabel lbl_vida3;
