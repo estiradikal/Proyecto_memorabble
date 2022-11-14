@@ -93,6 +93,9 @@ public class interfaz_memorabble extends javax.swing.JFrame{
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 campo_nombreKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                campo_nombreKeyTyped(evt);
+            }
         });
         jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 400, 30));
 
@@ -225,7 +228,10 @@ public class interfaz_memorabble extends javax.swing.JFrame{
      * Se encarga de realizar las verificaciones para que el contenido de campo_nombre tenga un nombre válido
      */
     public void verificarCampoNombre(){
-    if((campo_nombre.getText().isEmpty()) || ("Ingrese su nombre...".equals(campo_nombre.getText()))){
+    
+        String nombre_digitado=campo_nombre.getText();
+  
+        if((nombre_digitado.isEmpty()) || ("Ingrese su nombre...".equals(nombre_digitado))){
             solicitarCampoNombre();
         }
         else{
@@ -267,6 +273,13 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         como_jugar cj=new como_jugar();        
         cj.setVisible(true);
     }//GEN-LAST:event_btn_como_jugarMouseClicked
+
+    private void campo_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campo_nombreKeyTyped
+        
+        char c=evt.getKeyChar();
+        if((c<'a'||c>'z') && (c<'A')|c>'Z')evt.consume();{
+        }
+    }//GEN-LAST:event_campo_nombreKeyTyped
 
     /**
      * @param args the command line arguments
