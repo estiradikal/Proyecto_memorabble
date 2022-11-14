@@ -29,7 +29,7 @@ import java.awt.event.KeyListener;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-13-2022
+    Fecha última modificación: 11-14-2022
     Versión: 0.10
     Licencia: GNU-GPL
 */
@@ -72,10 +72,10 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener{
         mostrarCriterio(8);
         // --------------------------- //
         
-          setIconImage(getImage());
+          setIconImage(getImage());//Se inicializa en el constructor
     }
     
-     public Image getImage(){
+     public Image getImage(){//Método que establece el icono del programa.
         
         Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
         

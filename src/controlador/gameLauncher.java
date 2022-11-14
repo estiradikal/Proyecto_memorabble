@@ -15,7 +15,7 @@ import java.time.LocalTime;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 11-04-2022
-    Fecha última modificación: 11-04-2022
+    Fecha última modificación: 11-14-2022
     Versión: 1.2
     Licencia: GNU-GPL
 */
@@ -27,16 +27,18 @@ import java.time.LocalTime;
     - Etc...
 */
 public class gameLauncher {
+    //Declaración de variables con encapsulamiento privado.
     private LocalTime tiempoInicio;    
     private int tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos;
     
-    public gameLauncher(){
+    public gameLauncher(){ //Constructor de la clase
         tiempoInicio = LocalTime.now();
         tiempoInicioHoras = tiempoInicio.getHour();
         tiempoInicioMinutos = tiempoInicio.getMinute();
         tiempoInicioSegundos = tiempoInicio.getSecond();  
     }
     
+    //Método que ayuda a controlar el tiempo, pasando por parametros los estados iniciales del constructor de la clase interfaz jugable.
     public void nuevoJuego(){       
         interfaz_jugable ij = new interfaz_jugable(tiempoInicioHoras, tiempoInicioMinutos, tiempoInicioSegundos);
         ij.setVisible(true); 

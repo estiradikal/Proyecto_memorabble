@@ -19,17 +19,16 @@ import modelo.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-03-2022
+    Fecha última modificación: 11-14-2022
     Versión: 1.0
     Licencia: GNU-GPL
 */
 public class como_jugar extends javax.swing.JFrame {
-    reproductorSonido reproductor = new reproductorSonido();
-    
+    reproductorSonido reproductor = new reproductorSonido();//Instancia de la clase reproductor Sonido
     /**
      * Creates new form interfaz_memorabble
      */
-    public como_jugar() {
+    public como_jugar() { //Constructor de la clase como_jug
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
@@ -38,11 +37,11 @@ public class como_jugar extends javax.swing.JFrame {
         
     }
     
-       public Image getImage(){
+       public Image getImage(){ //método para colocar el icono del programa.
         
         Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
         
-        return retValue;
+        return retValue; //Retorna un objeto de tipo Image
     }
     
 
@@ -203,16 +202,13 @@ public class como_jugar extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_volverMouseClicked
 
     private void btn_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_volverActionPerformed
-        /*JOptionPane.showMessageDialog(null,"Instrucciones: "
-            + "\n" + "* Saldrán unas figuras con distintos colores y después de unos segundos desaparecerán."
-            + "\n" + "* Después saldrá una pregunta."
-            + "\n" + "* La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada."
-            + "\n" + "* ¡OJO! Es posible  que haya que pulsar más de una ficha..."
-            + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");*/
+        
+        /*está instrucción recibe por parametro el audio*/
         reproductor.reproducirSonido("quack.wav");
         interfaz_memorabble im=new interfaz_memorabble();
         im.setVisible(true);
         dispose();
+        /*En estás sentencias se está instanciando la clase interfaz memorabble, luego se hace visible la clase y se cierra la clase actual*/
     }//GEN-LAST:event_btn_volverActionPerformed
 
     /**

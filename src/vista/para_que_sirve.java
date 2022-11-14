@@ -19,16 +19,16 @@ import modelo.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-03-2022
+    Fecha última modificación: 11-14-2022
     Versión: 1.0
     Licencia: GNU-GPL
 */
 public class para_que_sirve extends javax.swing.JFrame {
-    reproductorSonido reproductor = new reproductorSonido();
+    reproductorSonido reproductor = new reproductorSonido(); //Instancia de la clase reproductorSonido
     /**
      * Creates new form interfaz_memorabble
      */
-    public para_que_sirve() {
+    public para_que_sirve() { //Constructor de la clase
         initComponents();
         setVisible(true);
         setLocationRelativeTo(null);
@@ -37,7 +37,7 @@ public class para_que_sirve extends javax.swing.JFrame {
         
     }
     
-    public Image getImage(){
+    public Image getImage(){ //Método que establece el icono del programa
         
         Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
         
@@ -152,10 +152,11 @@ public class para_que_sirve extends javax.swing.JFrame {
             + "\n" + "* La pregunta te indicara, que debes pulsar sobre una ficha que cumpla con la condición dada."
             + "\n" + "* ¡OJO! Es posible  que haya que pulsar más de una ficha..."
             + "\n" + "* Es importante que memorices formas, colores y posición de cada ficha.");*/
-        reproductor.reproducirSonido("quack.wav");
+        reproductor.reproducirSonido("quack.wav");//Recibe por parametro una canción
         interfaz_memorabble im=new interfaz_memorabble();
         im.setVisible(true);
         dispose();
+        /*estas sentencias reciben una instancia de la clase interfaz memorabble, hace visible la clase y cierra la ventana actual*/
     }//GEN-LAST:event_btn_volverActionPerformed
 
     /**

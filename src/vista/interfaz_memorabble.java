@@ -16,7 +16,7 @@ import modelo.*;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-13-2022
+    Fecha última modificación: 11-14-2022
     Versión: 1.1
     Licencia: GNU-GPL
 */
