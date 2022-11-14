@@ -13,6 +13,7 @@ import java.util.*;
 
 import modelo.*;
 import controlador.*;
+import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -70,6 +71,15 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener{
         syncBotonesStrings();
         mostrarCriterio(8);
         // --------------------------- //
+        
+          setIconImage(getImage());
+    }
+    
+     public Image getImage(){
+        
+        Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
+        
+        return retValue;
     }
     
     

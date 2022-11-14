@@ -29,6 +29,13 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false); 
+        setIconImage(getImage());
+    }
+       public Image getImage(){
+        
+        Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
+        
+        return retValue;
     }
     
     @SuppressWarnings("unchecked")
@@ -37,7 +44,6 @@ public class interfaz_memorabble extends javax.swing.JFrame{
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        lbl_titulo = new javax.swing.JLabel();
         lbl_bienvenido = new javax.swing.JLabel();
         lbl_digite_su_nombre = new javax.swing.JLabel();
         campo_nombre = new javax.swing.JTextField();
@@ -47,6 +53,7 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         btn_para_que_sirve = new javax.swing.JButton();
         lbl_imagen_lateral = new javax.swing.JLabel();
         lbl_separador_inferior = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
 
@@ -59,21 +66,15 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         jPanel1.setPreferredSize(new java.awt.Dimension(436, 472));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbl_titulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        lbl_titulo.setForeground(new java.awt.Color(0, 51, 51));
-        lbl_titulo.setText("Memorabble");
-        lbl_titulo.setFocusable(false);
-        jPanel1.add(lbl_titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
-
         lbl_bienvenido.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lbl_bienvenido.setText("Bienvenid@,");
         lbl_bienvenido.setFocusable(false);
-        jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
+        jPanel1.add(lbl_bienvenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         lbl_digite_su_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_digite_su_nombre.setText("Digite su nombre para empezar a jugar");
         lbl_digite_su_nombre.setFocusable(false);
-        jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+        jPanel1.add(lbl_digite_su_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         campo_nombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campo_nombre.setForeground(new java.awt.Color(153, 153, 153));
@@ -97,12 +98,12 @@ public class interfaz_memorabble extends javax.swing.JFrame{
                 campo_nombreKeyTyped(evt);
             }
         });
-        jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 400, 30));
+        jPanel1.add(campo_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 400, 30));
 
         lbl_separador.setBackground(new java.awt.Color(51, 51, 51));
         lbl_separador.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         lbl_separador.setOpaque(true);
-        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 400, 2));
+        jPanel1.add(lbl_separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 400, 2));
 
         btn_jugar.setBackground(new java.awt.Color(0, 102, 102));
         btn_jugar.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
@@ -115,7 +116,7 @@ public class interfaz_memorabble extends javax.swing.JFrame{
                 btn_jugarActionPerformed(evt);
             }
         });
-        jPanel1.add(btn_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 90, 40));
+        jPanel1.add(btn_jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 90, 40));
 
         btn_como_jugar.setBackground(new java.awt.Color(0, 102, 102));
         btn_como_jugar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -160,6 +161,9 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         lbl_separador_inferior.setFocusable(false);
         lbl_separador_inferior.setOpaque(true);
         jPanel1.add(lbl_separador_inferior, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 600, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -20, 220, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,7 +241,9 @@ public class interfaz_memorabble extends javax.swing.JFrame{
         else{
             iniciarPartida();
         }  
+            
     }
+
     
     /**
      * Autogenerado por NetBeans
@@ -323,12 +329,12 @@ public class interfaz_memorabble extends javax.swing.JFrame{
     private javax.swing.JButton btn_para_que_sirve;
     private javax.swing.JTextField campo_nombre;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbl_bienvenido;
     private javax.swing.JLabel lbl_digite_su_nombre;
     private javax.swing.JLabel lbl_imagen_lateral;
     private javax.swing.JLabel lbl_separador;
     private javax.swing.JLabel lbl_separador_inferior;
-    private javax.swing.JLabel lbl_titulo;
     // End of variables declaration//GEN-END:variables
 }

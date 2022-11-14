@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import modelo.*;
 
 /*
@@ -32,9 +34,17 @@ public class como_jugar extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
-
+        setIconImage(getImage());
         
     }
+    
+       public Image getImage(){
+        
+        Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
+        
+        return retValue;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import modelo.*;
 
 /*
@@ -31,8 +33,15 @@ public class para_que_sirve extends javax.swing.JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
         setResizable(false);
-
+        setIconImage(getImage());
         
+    }
+    
+    public Image getImage(){
+        
+        Image retValue=Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/Memorabble.png"));
+        
+        return retValue;
     }
 
     /**
