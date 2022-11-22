@@ -29,7 +29,7 @@ import java.awt.event.KeyListener;
             * Estiven Andres Martinez Granados <estiven.martinez@correounivalle.edu.co> - 202179687-3743
             * Juan David Loaiza Santiago <juan.loaiza.santiago@correounivalle.edu.co> - 2177570-3743             
     Fecha creación: 10-30-2022
-    Fecha última modificación: 11-14-2022
+    Fecha última modificación: 11-21-2022
     Versión: 0.10
     Licencia: GNU-GPL
 */
@@ -512,7 +512,8 @@ public class interfaz_jugable extends javax.swing.JFrame implements KeyListener{
     * Metodo práctico, solo redirige y reproduce un audio de victoria de ronda
     * @see siguienteRonda();  Redirige a este metodo
     */
-    public void victoria(){        
+    public void victoria(){ 
+        if(rondaActual % 4 == 0) dificultad++;
         siguienteRonda();       
     }
     
